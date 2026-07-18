@@ -62,12 +62,13 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  wget
+gh
+
      ghostty
      firefox
      fuzzel
-     waybar
      mako
      swaybg
      swayidle
@@ -80,6 +81,7 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 	enable = true;
 	settings.default_session = {
 		command = "${pkgs.niri}/bin/niri-session";
+
 		user = "wumps";
 	};
   };
@@ -87,8 +89,9 @@ programs.dms-shell = {
 	enable = true;
 	systemd.enable = true;
 };
-  security.polkit.enable = true;
-  # Some programs need SUID wrappers, can be configured further or are
+  security.polkit.enable = true;  
+services.power-profiles-daemon.enable = true;
+# Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
