@@ -143,9 +143,6 @@
             dr = "nixos-rebuild dry-run --flake .#default";
             ncb = "sudo nix-collect-garbage -d";
             ncg = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-            # The ultimate one-word vault editing command
-            vault-edit = "SOPS_AGE_KEY_FILE=\$HOME/.config/sops/age/keys.txt ${pkgs.sops}/bin/sops \$HOME/my-nixos-flake/secrets/secrets.yaml";
-
             # Directory Shortcuts.
             dots = "cd ~/nixri/";
             games = "cd /mnt/games/";

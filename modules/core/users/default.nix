@@ -57,14 +57,11 @@ in
         "networkmanager"
         "video"
         "audio"
-        "libvirtd"
-        "kvm"
         "docker"
         "disk"
         "adbusers"
         "lp"
         "scanner"
-        "vboxusers" # Virtual Box
       ];
       shell = pkgs.${shell};
       ignoreShellProgramCheck = true;

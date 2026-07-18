@@ -22,14 +22,11 @@ let
     "networkmanager"
     "video"
     "audio"
-    "libvirtd"
-    "kvm"
     "docker"
     "disk"
     "adbusers"
     "lp"
     "scanner"
-    "vboxusers"
   ];
 
   sessionVariablesFor = editorArg: {
