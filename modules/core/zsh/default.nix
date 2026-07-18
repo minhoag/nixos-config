@@ -25,12 +25,6 @@
             if command -v starship &>/dev/null; then
               eval "$(starship init zsh)"
             fi
-
-            # Direnv Hook
-            if command -v direnv &>/dev/null; then
-              eval "$(direnv hook zsh)"
-            fi
-
             # Key Bindings
             # bindkey -s ^t "tmux-sessionizer\n"
             # bindkey '^f' "cd $(${pkgs.fd}/bin/fd . /mnt/work /mnt/work/Projects/ /run/current-system ~/ --max-depth 1 | fzf)\n"
@@ -94,12 +88,10 @@
               fi
               nix flake new $2 --template ${self}/dev-shells#$1
               cd $2
-              direnv allow
             '';
 
             finit = ''
               nix flake init --template ${self}/dev-shells#$1
-              direnv allow
             '';
             cdown = ''
               N=$1

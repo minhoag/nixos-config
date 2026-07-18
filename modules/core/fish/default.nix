@@ -52,11 +52,9 @@
               end
               nix flake new $argv[2] --template ${self}/dev-shells#$argv[1]
               cd $argv[2]
-              direnv allow
             '';
             finit = ''
               nix flake init --template ${self}/dev-shells#$argv[1]
-              direnv allow
             '';
             cdown = ''
               set N $argv[1]

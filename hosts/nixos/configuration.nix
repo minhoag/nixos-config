@@ -43,18 +43,13 @@ in
     "${self}/modules/programs/editor/opencode"
     # "${self}/modules/programs/editor/antigravity"
     # "${self}/modules/programs/editor/cursor"
-    # "${self}/modules/programs/cli/direnv"
     "${self}/modules/programs/terminal/fastfetch"
     # "${self}/modules/programs/tuning/cpufreq"
-    "${self}/modules/programs/cli/cava"
     "${self}/modules/programs/cli/btop"
     # "${self}/modules/programs/media/discord"
-    # "${self}/modules/programs/media/spicetify"
     # "${self}/modules/programs/media/youtube-music"
-    # "${self}/modules/programs/media/thunderbird"
     # "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
-    # "${self}/modules/programs/media/rclone"
     # "${self}/modules/programs/tuning/tlp"
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
   ]

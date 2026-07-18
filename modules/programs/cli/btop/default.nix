@@ -9,7 +9,6 @@
           cudaSupport = true;
         };
         settings = {
-          color_theme = "stylix";
           show_gpu_info = "on";
           cpu_sensor = "auto";
           vim_keys = true;

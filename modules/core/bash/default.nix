@@ -13,11 +13,6 @@
             if command -v starship &>/dev/null; then
               eval "$(starship init bash)"
             fi
-
-            # Direnv Hook
-            if command -v direnv &>/dev/null; then
-              eval "$(direnv hook bash)"
-            fi
           '';
           # bashrcExtra = ''
           #   export TERM="xterm-256color" # Get correct colour
@@ -63,12 +58,10 @@
               fi
               nix flake new $2 --template ${self}/dev-shells#$1
               cd $2
-              direnv allow
             '';
 
             finit = ''
               nix flake init --template ${self}/dev-shells#$1
-              direnv allow
             '';
             cdown = ''
               N=$1
