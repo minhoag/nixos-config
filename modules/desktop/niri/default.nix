@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./dms
@@ -6,6 +6,9 @@
   ];
 
   programs.niri.enable = true;
+
+  # Niri uses this for on-demand X11 compatibility (Steam, Wine, etc.).
+  environment.systemPackages = [ pkgs.xwayland-satellite ];
 
   home-manager.sharedModules = [
     {

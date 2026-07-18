@@ -106,7 +106,7 @@
 
             # Directory Shortcuts.
             dots = "cd ~/nixri/";
-            games = "cd /mnt/games/";
+            games = "cd /mnt/Games/";
             work = "cd /mnt/work/";
             media = "cd /mnt/work/media/";
             projects = "cd /mnt/work/Projects/";

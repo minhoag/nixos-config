@@ -1,9 +1,8 @@
 { lib, ... }:
 {
-  # change according to your partition name and format
   fileSystems."/mnt/Games" = lib.mkForce {
-    device = "/dev/disk/by-uuid/12345678-1234-1234-1234-123456789012";
-    fsType = "btrfs";
+    device = "/dev/disk/by-uuid/0aa3a390-9d56-41f3-ba93-cd4d7568dd29";
+    fsType = "ext4";
     options = [
       "rw"
       "defaults" # Default flags

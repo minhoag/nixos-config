@@ -39,12 +39,9 @@
     papirus-icon-theme # Papirus icon theme
     # calibre # Comprehensive e-book software
     # vivaldi # Browser for our Friends, powerful and personal
-    nicotine-plus # Graphical client for the SoulSeek peer-to-peer system
-    easyeffects # Audio effects for PipeWire applications
     # pay-respects # Magnificent app which corrects your previous console command
     nix-tree # Interactively browse a Nix store paths dependencies
     imagemagickBig # Software suite to create, edit, compose, or convert bitmap images
-    nomacs # Qt-based image viewer
     # epiphany # WebKit based web browser
     # digikam # Photo management application
     # gapless # Beautiful, fast, fluent, light weight music player written in GTK4

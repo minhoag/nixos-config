@@ -31,16 +31,6 @@ with lib;
             ];
             "inode/blockdevice" = [ "thunar.desktop" ];
 
-            # Images - nomacs
-            "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/jpg" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
-            "image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
-
             # Videos - celluloid
             "video/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
             "video/mpeg" = [ "io.github.celluloid_player.Celluloid.desktop" ];

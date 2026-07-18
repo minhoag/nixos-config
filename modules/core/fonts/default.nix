@@ -10,6 +10,9 @@
       # Normal Fonts
       noto-fonts
       noto-fonts-color-emoji
+      inter
+      fira-code
+      nerd-fonts.fira-code
     ];
     fontconfig = {
       enable = true;

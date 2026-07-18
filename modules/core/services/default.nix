@@ -4,6 +4,7 @@
   services = {
     libinput.enable = true; # Input Handling
     fstrim.enable = true; # SSD Optimizer
+    power-profiles-daemon.enable = true;
     devmon.enable = true; # For Mounting USB & More
     gvfs.enable = true; # For Mounting USB & More
     udisks2.enable = true; # For Mounting USB & More
