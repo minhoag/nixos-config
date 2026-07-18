@@ -1,6 +1,8 @@
+{ inputs, ... }:
+
 {
   home-manager.sharedModules = [
-    ({ inputs, pkgs, ... }: {
+    ({ lib, ... }: {
       imports = [
         inputs.dms.homeModules.dank-material-shell
         inputs.dms.homeModules.niri
@@ -12,13 +14,13 @@
         enableCalendarEvents = false;
       };
 
-      home.activation.seedDmsSettings = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        DMS_SETTINGS="$HOME/.config/DankMaterialShell/settings.json"
+      home.activation.seedDmsSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        settings="$HOME/.config/DankMaterialShell/settings.json"
 
-        if [ ! -e "$DMS_SETTINGS" ]; then
-          mkdir -p "$(dirname "$DMS_SETTINGS")"
-          cp ${./dms-settings.json} "$DMS_SETTINGS"
-          chmod u+w "$DMS_SETTINGS"
+        if [ ! -e "$settings" ]; then
+          mkdir -p "$(dirname "$settings")"
+          cp ${./settings.json} "$settings"
+          chmod u+w "$settings"
         fi
       '';
     })
