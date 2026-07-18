@@ -1,10 +1,10 @@
 {
   # User Configuration
-  username = "wumps";
-  gitUsername = "wumps";
-  gitEmail = "nhoang120899@gmail.com";
+  username = "annmaro";
+  gitUsername = "annmaro";
+  gitEmail = "anandk60440@gmail.com";
   desktop = "niri";
-  terminal = "kitty"; # Options: foot, kitty
+  terminal = "foot"; # Options: foot, kitty
   editor = "neovim"; # Options: vscode, antigravity, neovim
   browser = "firefox"; # Options: firefox, zen
   tuiFileManager = "yazi"; # Options: yazi, lf
@@ -12,8 +12,9 @@
   games = true; # Whether to enable the gaming module
 
   # Hardware Configuration
-  videoDriver = "amdgpu"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
-  hostname = "wumps"; # Your system hostname
+  videoDriver = "intel"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
+  hostname = "nixri"; # Your system hostname
+
   # Localization
   clock24h = true; # 24H or 12H clock in waybar
   kbdLayout = "us"; # Keyboard layout

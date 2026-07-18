@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs,  ... }:
 {
   environment.systemPackages = with pkgs; [
     obsidian
-    # proton-vpn
+    proton-vpn # VPN
     # github-desktop
     pokego # Overlayed
-    # waybar-weather # Waybar Weather Module
-  ];
+   # waybar-weather # Waybar Weather Module
+];
 }
