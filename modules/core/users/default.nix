@@ -54,6 +54,7 @@ in
       extraGroups = [
         "wheel" # sudo access
         "input"
+        "i2c"
         "networkmanager"
         "video"
         "audio"

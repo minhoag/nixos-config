@@ -19,6 +19,7 @@
     appimage-run # Needed For AppImage Support
     killall # For Killing All Instances Of Programs
     lm_sensors # Used For Getting Hardware Temps
+    ddcutil # Control external monitor brightness over DDC/CI
     gnome-disk-utility # Disk Partitioning and Mounting Utility
     jq # Json Formatting Utility
     libsecret # Library for storing and retrieving passwords and other secrets

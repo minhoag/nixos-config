@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   hardware = {
+    # External monitors expose brightness controls over DDC/CI.
+    i2c.enable = true;
     sane = {
       enable = true;
       extraBackends = [ pkgs.sane-airscan ];

@@ -19,8 +19,7 @@
 
         if [ ! -e "$settings" ]; then
           mkdir -p "$(dirname "$settings")"
-          cp ${./settings.json} "$settings"
-          chmod u+w "$settings"
+          install -m 600 ${./settings.json} "$settings"
         fi
       '';
     })
