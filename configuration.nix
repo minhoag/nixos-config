@@ -113,6 +113,7 @@
   systemd.tmpfiles.rules = [
     "d /mnt/Games/SteamLibrary 0755 wumps users -"
     "d /mnt/Games/SteamLibrary/steamapps 0755 wumps users -"
+    "L+ /home/wumps/.local/share/Steam/steamapps - - - - /mnt/Games/SteamLibrary/steamapps"
   ];
   # Security
   security.polkit.enable = true;
