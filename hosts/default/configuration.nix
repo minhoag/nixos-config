@@ -43,13 +43,12 @@ in
     "${self}/modules/programs/browser/${vars.browser}" # Set browser defined in variables.nix
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix
     "${self}/modules/programs/editor/${vars.editor}" # Set editor defined in variables.nix
-    "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
-    "${self}/modules/programs/editor/vscode"
+    # "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
     # "${self}/modules/programs/editor/antigravity"
     #"${self}/modules/programs/editor/cursor"
     # "${self}/modules/programs/browser/zen"
     # "${self}/modules/programs/browser/vimb"
-    "${self}/modules/programs/cli/direnv"
+    # "${self}/modules/programs/cli/direnv"
     "${self}/modules/programs/terminal/fastfetch"
     # "${self}/modules/programs/tuning/cpufreq"
     # "${self}/modules/programs/cli/cava"

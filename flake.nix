@@ -101,6 +101,7 @@
           inherit system;
           modules = [
             inputs.disko.nixosModules.disko
+            inputs.home-manager.nixosModules.home-manager
             ./hosts/${host}/configuration.nix
             {
               nixpkgs.overlays = [
