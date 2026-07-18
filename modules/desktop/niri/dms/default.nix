@@ -1,166 +1,209 @@
-{ self, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+
 {
   home-manager.sharedModules = [
     (
       { config, ... }:
+
+      let
+        # Safe extraction of Stylix colors with a fallback syntax layout
+        stylixColors = config.lib.stylix.colors or { };
+
+        bgColor = "#${stylixColors.base00 or "1e1e2e"}"; # Background
+        fgColor = "#${stylixColors.base05 or "cdd6f4"}"; # Default Text
+        accentColor = "#${stylixColors.base0E or "cba6f7"}"; # Primary Accent (Mauve)
+        surfaceMuted = "#${stylixColors.base03 or "45475a"}";
+
+        # Cleaned up payload block: Defined once, inherited for both dark & light modes
+        themePayload = {
+          background = bgColor;
+          backgroundText = fgColor;
+          error = "#${stylixColors.base08 or "f38ba8"}";
+          info = "#${stylixColors.base0D or "89b4fa"}";
+          name = "CatppuccinMocha";
+          outline = "#${stylixColors.base04 or "585b70"}";
+          primary = accentColor;
+          primaryContainer = accentColor;
+          primaryText = bgColor;
+          secondary = surfaceMuted;
+          surface = bgColor;
+          surfaceContainer = bgColor;
+          surfaceContainerHigh = surfaceMuted;
+          surfaceContainerHighest = "#${stylixColors.base04 or "585b70"}";
+          surfaceText = fgColor;
+          surfaceTint = accentColor;
+          surfaceVariant = surfaceMuted;
+          surfaceVariantText = fgColor;
+          warning = "#${stylixColors.base0A or "f9e2af"}";
+        };
+
+        catppuccinMochaTheme = {
+          dark = themePayload;
+          light = themePayload;
+        };
+      in
       {
-        programs.zsh = {
+        imports = [
+          inputs.dms.homeModules.dank-material-shell
+          inputs.dms.homeModules.niri # Enforce native Niri features & auto-spawning
+          ./logo.nix # Custom system logo plugin with inline QML for better performance and easier management
+        ];
+
+        programs.dank-material-shell = {
           enable = true;
-          autosuggestion.enable = true;
-          syntaxHighlighting.enable = true;
-          enableCompletion = true;
-          history.size = 100000;
-          history.path = "\${XDG_DATA_HOME}/zsh/history";
-          dotDir = "${config.xdg.configHome}/zsh";
-          oh-my-zsh = {
-            enable = true;
-            plugins = [
-              "git"
-              "gitignore"
-              "z"
-            ];
+          systemd.enable = true;
+
+          niri = {
+            enableKeybinds = false; # Disable DMS's built-in keybinds to prevent conflicts with your custom ones
+            enableSpawn = false; # Disable DMS's built-in autostart to prevent conflicts with your custom spawn-at-startup setup
+            includes = {
+              enable = true;
+              # Set override to false so your custom hm.kdl takes priority
+              override = false;
+              # Exclude colors and layout files so DMS doesn't inject its own window borders
+              filesToInclude = [
+                "alttab"
+                "binds"
+                "wpblur"
+              ];
+            };
           };
-          initContent = ''
-            # Starship Prompt
-            if command -v starship &>/dev/null; then
-              eval "$(starship init zsh)"
-            fi
+        };
 
-            # Direnv Hook
-            if command -v direnv &>/dev/null; then
-              eval "$(direnv hook zsh)"
-            fi
+        /*
+          Clear Out Stale Local DMS Configurations before generating colors from stylix to prevent conflicts and ensure a clean slate for the new theme.
+          This is necessary because DMS v6 introduced some changes to how it handles themes and configurations, and old files can cause unexpected behavior if not removed.
 
-            # Key Bindings
-            # bindkey -s ^t "tmux-sessionizer\n"
-            # bindkey '^f' "cd $(${pkgs.fd}/bin/fd . /mnt/work /mnt/work/Projects/ /run/current-system ~/ --max-depth 1 | fzf)\n"
-            bindkey '^a' beginning-of-line
-            bindkey '^e' end-of-line
+          rm -rf ~/.config/niri/dms/colors.kdl
+          rm -rf ~/.config/niri/dms/layout.kdl
+        */
 
-            # options
-            unsetopt menu_complete
-            unsetopt flowcontrol
+        home.packages = with pkgs; [
+          dgop # Required for DMS system tracking features
+          nerd-fonts.jetbrains-mono
+          material-symbols
+          material-design-icons
+        ];
 
-            setopt prompt_subst
-            setopt always_to_end
-            setopt append_history
-            setopt auto_menu
-            setopt complete_in_word
-            setopt extended_history
-            setopt hist_expire_dups_first
-            setopt hist_ignore_dups
-            setopt hist_ignore_space
-            setopt hist_verify
-            setopt inc_append_history
-            setopt share_history
-          '';
-          envExtra = ''
-            # Defaults
-            export XMONAD_CONFIG_DIR="''${XDG_CONFIG_HOME:-$HOME/.config}/xmonad" # xmonad.hs is expected to stay here
-            export XMONAD_DATA_DIR="''${XDG_DATA_HOME:-$HOME/.local/share}/xmonad"
-            export XMONAD_CACHE_DIR="''${XDG_CACHE_HOME:-$HOME/.cache}/xmonad"
+        # =====================================================================
+        # 🎨 AUTOMATIC THEME GENERATION
+        # =====================================================================
+        # Nix now dynamically generates the file using your Stylix palette!
+        xdg.configFile."DankMaterialShell/themes/catppuccinMocha/theme.json".text =
+          builtins.toJSON catppuccinMochaTheme;
+        xdg.configFile."DankMaterialShell/nix.png".source = ./nix.png; # Symlink the local nix.png into the expected path in the home directory for DMS to use as the profile image
 
-            export FZF_DEFAULT_OPTS=" \
-            --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-            --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-            --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+        # =====================================================================
+        # 🎨 SETTINGS.JSON & SESSION STATE CONFIGURATION
+        # =====================================================================
 
-          '';
-          shellGlobalAliases = {
-            UUID = "$(uuidgen | tr -d \\n)";
-            G = "| grep";
+        home.activation.dmsWeather = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+          SESSION_FILE="$HOME/.local/state/DankMaterialShell/session.json"
+          if [ -f "$SESSION_FILE" ] && [ ! -L "$SESSION_FILE" ]; then
+            $DRY_RUN_CMD ${pkgs.jq}/bin/jq '.weatherLocation = "Jharkhand, India" | .weatherCoordinates = "23.63,85.52"' "$SESSION_FILE" > "$SESSION_FILE.tmp" && \
+            $DRY_RUN_CMD mv "$SESSION_FILE.tmp" "$SESSION_FILE"
+          elif [ ! -f "$SESSION_FILE" ]; then
+            $DRY_RUN_CMD mkdir -p "$HOME/.local/state/DankMaterialShell"
+            $DRY_RUN_CMD echo '{"weatherLocation": "Jharkhand, India", "weatherCoordinates": "23.63,85.52"}' > "$SESSION_FILE"
+          fi
+        '';
+
+        xdg.configFile."DankMaterialShell/settings.json".text = builtins.toJSON {
+          configVersion = 6;
+          screenPreferences = {
+            wallpaper = [ ]; # This replaces the old disableWallpaper = true flag in DMS v6
           };
-          shellAliases = {
-            lf = ''
-                {
-                  tmp="$(mktemp)"
-                  # `command` is needed in case `lfcd` is aliased to `lf`
-                  command lf -last-dir-path="$tmp" "$@"
-                  if [ -f "$tmp" ]; then
-                      dir="$(cat "$tmp")"
-                      rm -f "$tmp"
-                      if [ -d "$dir" ]; then
-                          if [ "$dir" != "$(pwd)" ]; then
-                              cd "$dir"
-                          fi
-                      fi
-                  fi
-              }
-            '';
-            fnew = ''
-              if [ -d "$2" ]; then
-                echo "Directory \"$2\" already exists!"
-                return 1
-              fi
-              nix flake new $2 --template ${self}/dev-shells#$1
-              cd $2
-              direnv allow
-            '';
 
-            finit = ''
-              nix flake init --template ${self}/dev-shells#$1
-              direnv allow
-            '';
-            cdown = ''
-              N=$1
-              while [[ $((--N)) -gt  0 ]]
-                do
-                  echo "$N" |  figlet -c | lolcat &&  sleep 1
-              done
-            '';
-            cls = "clear";
-            tml = "tmux list-sessions";
-            tma = "tmux attach";
-            tms = "tmux attach -t $(tmux ls -F '#{session_name}: #{session_path} (#{session_windows} windows)' | fzf | cut -d: -f1)";
-            l = "eza -lh  --icons=auto"; # long list
-            ls = "eza -1   --icons=auto"; # short list
-            ll = "eza -lha --icons=auto --sort=name --group-directories-first"; # long list all
-            ld = "eza -lhD --icons=auto"; # long list dirs
-            tree = "eza --icons=auto --tree"; # dir tree
-            vc = "code --disable-gpu"; # gui code editor
-            nv = "nvim";
-            nf = "${pkgs.microfetch}/bin/microfetch";
-            cp = "cp -iv";
-            mv = "mv -iv";
-            rm = "rm -vI";
-            bc = "bc -ql";
-            mkd = "mkdir -pv";
-            tp = "${pkgs.trash-cli}/bin/trash-put";
-            tpr = "${pkgs.trash-cli}/bin/trash-restore";
-            grep = "grep --color=always";
-            # Nixos
-            list-gens = "nixos-rebuild list-generations";
-            find-store-path = ''function { nix-shell -p $1 --command "nix eval -f \"<nixpkgs>\" --raw $1" }'';
-            nfu = "nix flake update";
-            nfs = "nix flake show";
-            wp = "hyprctl hyprpaper reload ,";
-            nrs = "sudo nixos-rebuild boot --flake .#default";
-            nhu = "nh os switch --hostname default";
-            nrb = "nh os boot --hostname default";
-            da = "sudo nixos-rebuild dry-activate --flake .#default";
-            dr = "nixos-rebuild dry-run --flake .#default";
-            ncb = "sudo nix-collect-garbage -d";
-            ncg = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-            # The ultimate one-word vault editing command
-            vault-edit = "SOPS_AGE_KEY_FILE=\$HOME/.config/sops/age/keys.txt ${pkgs.sops}/bin/sops \$HOME/my-nixos-flake/secrets/secrets.yaml";
-            # Directory Shortcuts.
-            dots = "cd ~/nixri/";
-            games = "cd /mnt/games/";
-            work = "cd /mnt/work/";
-            media = "cd /mnt/work/media/";
-            projects = "cd /mnt/work/Projects/";
-            proj = "cd /mnt/work/Projects/";
-            dev = "cd /mnt/work/Projects/";
-            # dev = "cd /mnt/work/dev/";
-            # nixdir = "cd /mnt/work/dev/nix/";
-            # cppdir = "cd /mnt/work/dev/C++/";
-            # zigdir = "cd /mnt/work/dev/Zig/";
-            # csdir = "cd /mnt/work/dev/C#/";
-            # rustdir = "cd /mnt/work/dev/Rust/";
-            # pydir = "cd /mnt/work/dev/Python/";
-            # javadir = "cd /mnt/work/dev/Java/";
-            # luadir = "cd /mnt/work/dev/lua/";
-            # webdir = "cd /mnt/work/dev/Website/";
+          modules = {
+            bar = true;
+            notifications = true;
+            idle = true;
+            lockscreen = true;
+            wallpaper = false; # false to keep it managed by your separate awww/swaybg
+            launcher = false; # Handled by your native rofi setup
+            dock = false;
+          };
+
+          dynamicTheming = false; # Disable dynamic theming to maintain a consistent look across all widgets, regardless of the current wallpaper or system theme. This ensures that your custom color choices are always applied.
+          currentThemeName = "custom"; # Use "custom" to apply your custom theme file specified below
+          customThemeFile = "${config.home.homeDirectory}/.config/DankMaterialShell/themes/catppuccinMocha/theme.json"; # Path to your custom theme file, which is generated dynamically from your Stylix palette. Make sure this path matches where your theme file is generated and stored.
+
+          fontFamily = config.stylix.fonts.sansSerif.name;
+          monoFontFamily = config.stylix.fonts.monospace.name;
+
+          profileImage = "${config.home.homeDirectory}/.config/DankMaterialShell/nix.png"; # Set the path to your profile image for display in the overview and other DMS components. Make sure the image exists at this location and is in a supported format (e.g., PNG, JPEG).
+          launcherLogoMode = "os"; # Set to "os" to display your custom NixOS system logo (SystemLogo.qml) inside the launcher button
+
+          widgetBackgroundColor = "s"; # Use DMS's color tokens for consistent theming
+          widgetColorMode = "colorful"; # "colorful" to use theme colors, "default" for a more neutral look
+          buttonColorMode = "primary"; # Use primary color for buttons
+
+          popupTransparency = 0.40; # Set popup transparency to create a frosted glass effect for notifications and other popups, allowing the wallpaper to subtly show through while keeping the content readable. Adjust as needed for your preferred balance of visibility and aesthetics.
+          cornerRadius = 16; # Apply a consistent border radius to all widgets for a cohesive look
+
+          blurEnabled = true; # Enable blur for overview and other popups
+          blurWallpaperOnOverview = true; # Blur the wallpaper when opening the overview for better focus on windows
+          blurForegroundLayers = false; # Only blur the background for a cleaner look
+
+          systemTrayIconTintMode = "primary"; # Tint system tray icons with the primary color for a more cohesive look. Adjust as needed based on your custom theme's color palette for optimal aesthetics.
+          systemTrayIconTintSaturation = 40; # Increase saturation of tinted system tray icons to make them pop against the background. Adjust as needed based on your custom theme's color palette and desired level of emphasis on the icons.
+          systemTrayIconTintStrength = 150; # Increase tint strength for system tray icons to create a more pronounced effect and better integration with the overall theme. Adjust as needed based on your custom theme's color palette and desired level of emphasis on the icons.
+
+          barConfigs = [
+            {
+              id = "default";
+              name = "Main Bar";
+              enabled = true;
+              position = "top";
+              spacing = 0; # Space between the bar and screen edges
+
+              # Setting bar transparency to 0 hides the background bar background,
+              # allowing only the styled widgets to display as floating pill capsules.
+              transparency = 0.30; # Set bar transparency to create a frosted glass effect, allowing the wallpaper to subtly show through while keeping the content readable. Adjust as needed for your preferred balance of visibility and aesthetics.
+              widgetTransparency = 0.50; # Set widget transparency to make them slightly see-through, allowing the wallpaper to subtly show through while keeping the content readable. Adjust as needed for your preferred balance of visibility and aesthetics.
+
+              widgetOutlineEnabled = true; # Enable outlines for widgets to enhance visibility and separation from the background
+              widgetOutlineColor = "primary"; # Use primary color for widget outlines to create a cohesive look with the rest of the theme. Adjust as needed based on your custom theme's color palette for optimal contrast and aesthetics.
+              widgetOutlineOpacity = 1.0; # Set widget outline opacity to fully opaque for maximum visibility and contrast against the background. Adjust as needed for a more subtle effect while maintaining clear separation of widgets from the wallpaper.
+              widgetOutlineThickness = 1; # Set widget outline thickness to 1px for a clean and defined border that enhances visibility without overwhelming the design. Adjust as needed based on your personal preference and the overall aesthetics of your theme.
+              squareCorners = true; # Set to true to make all corners square, overriding gothCornersEnabled for a more classic look
+
+              fontScale = 1.5; # Increase font scale for better readability and a more impactful visual presence on the bar. Adjust as needed based on your screen resolution and personal preference.
+              iconScale = 1.5; # Increase icon scale to match the larger font size and create a more cohesive look on the bar. Adjust as needed based on your widget sizes and personal preference.
+
+              network_click_action = "applet";
+              audio_click_action = "applet";
+
+              leftWidgets = [
+                "launcherButton"
+                "workspaceSwitcher"
+                "focusedWindow"
+              ];
+              centerWidgets = [
+                "clock"
+              ];
+              rightWidgets = [
+                "weather"
+                "cpuTemp"
+                "systemTray"
+                "memUsage"
+                "controlCenterButton"
+                "notificationButton"
+              ];
+            }
+          ];
+
+          widgets = {
+            workspace_switcher = {
+              show_labels = false;
+              indicator_style = "pill";
+            };
           };
         };
       }

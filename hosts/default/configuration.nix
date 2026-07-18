@@ -33,7 +33,7 @@ in
     # "${self}/modules/core/users"
     "${self}/modules/core/flatpak"
     "${self}/modules/core/xdg"
-    "${self}/modules/core/virtualisation"
+    # "${self}/modules/core/virtualisation"
     # "${self}/modules/core/dlna.nix"
 
     # Optional
@@ -45,24 +45,24 @@ in
     "${self}/modules/programs/editor/${vars.editor}" # Set editor defined in variables.nix
     "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
     "${self}/modules/programs/editor/vscode"
-    "${self}/modules/programs/editor/antigravity"
+    # "${self}/modules/programs/editor/antigravity"
     #"${self}/modules/programs/editor/cursor"
     # "${self}/modules/programs/browser/zen"
-    "${self}/modules/programs/browser/vimb"
+    # "${self}/modules/programs/browser/vimb"
     "${self}/modules/programs/cli/direnv"
     "${self}/modules/programs/terminal/fastfetch"
-    "${self}/modules/programs/tuning/cpufreq"
-    "${self}/modules/programs/cli/cava"
-    "${self}/modules/programs/cli/btop"
+    # "${self}/modules/programs/tuning/cpufreq"
+    # "${self}/modules/programs/cli/cava"
+    # "${self}/modules/programs/cli/btop"
     # "${self}/modules/programs/media/discord"
-    "${self}/modules/programs/media/spicetify"
+    # "${self}/modules/programs/media/spicetify"
     # "${self}/modules/programs/media/youtube-music"
     # "${self}/modules/programs/media/thunderbird"
     # "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
-    "${self}/modules/programs/media/rclone"
-    "${self}/modules/programs/tuning/tlp"
+    # "${self}/modules/programs/media/rclone"
+    # "${self}/modules/programs/tuning/tlp"
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
-  ]
-  ++ lib.optional (vars.games == true) "${self}/modules/core/games";
+    "${self}/modules/core/games"
+  ];
 }
