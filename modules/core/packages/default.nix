@@ -13,6 +13,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
   environment.systemPackages = with pkgs; [
     appimage-run # Needed For AppImage Support
     killall # For Killing All Instances Of Programs
@@ -34,9 +36,9 @@
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     peazip # File and archive manager
+    papirus-icon-theme # Papirus icon theme
     # calibre # Comprehensive e-book software
     # vivaldi # Browser for our Friends, powerful and personal
-    pdf4qt # Open source PDF editor
     nicotine-plus # Graphical client for the SoulSeek peer-to-peer system
     easyeffects # Audio effects for PipeWire applications
     # pay-respects # Magnificent app which corrects your previous console command

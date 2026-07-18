@@ -11,7 +11,7 @@
     ];
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
-    
+
     # Kernel Parameter Tuning for zRAM
     kernel.sysctl = {
       "vm.swappiness" = 100;
@@ -19,19 +19,22 @@
     kernelParams = [
       "preempt=full" # lower latency but less throughput
     ];
-    
+
     loader = {
-      systemd-boot.enable = true;   
-      systemd-boot.consoleMode = "auto"; # Automatically scales up the text/resolution
-      efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot";
-      timeout = 10; # bootloader display duration
-      
-      grub = {
-        enable = false;
+      systemd-boot.enable = false;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
       };
+      limine = {
+        enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = false;
+        maxGenerations = 10;
+      };
+      timeout = 10;
     };
-    
+
     # Appimage Support
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
