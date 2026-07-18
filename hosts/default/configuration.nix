@@ -61,7 +61,7 @@ in
     # "${self}/modules/programs/media/thunderbird"
     # "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
-    "${self}/modules/programs/media/rclone"
+    # "${self}/modules/programs/media/rclone"
     "${self}/modules/programs/tuning/tlp"
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
   ]
