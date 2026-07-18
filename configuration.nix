@@ -64,11 +64,14 @@
   ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
     wget
     gh
     ghostty
@@ -81,7 +84,7 @@
     xwayland-satellite
     pkgs.opencode
   ];
-  # Niri installation
+  # Programs
   programs.niri.enable = true;
   programs.dms-shell = {
     enable = true;
@@ -94,7 +97,26 @@
     dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
     # Other general flags if available can be set here.
   };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  # Mounting Disk
+  fileSystems."/mnt/Games" = {
+    device = "/dev/disk/by-label/Games";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "x-gvfs-show"
+    ];
+  };
+  systemd.tmpfiles.rules = [
+    "d /mnt/Games/SteamLibrary 0755 wumps users -"
+    "d /mnt/Games/SteamLibrary/steamapps 0755 wumps users -"
+  ];
+  # Security
   security.polkit.enable = true;
+  # Services
   services.greetd = {
     enable = true;
     settings.default_session = {
