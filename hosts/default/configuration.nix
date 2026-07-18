@@ -64,4 +64,15 @@ in
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
     "${self}/modules/core/games"
   ];
+
+  users.groups.${vars.username} = { };
+
+  users.users.${vars.username} = {
+    isNormalUser = true;
+    group = vars.username;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+  };
 }
