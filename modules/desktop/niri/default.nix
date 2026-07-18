@@ -212,7 +212,7 @@ in
           }
 
           window-rule {
-              match app-id="^(firefox|zen-beta|floorp|vivaldi-stable|brave-|vlc|easyeffects|gapless)$"
+              match app-id="^(firefox|floorp|vivaldi-stable|brave-|vlc|easyeffects|gapless)$"
               open-maximized true
               draw-border-with-background false
               opacity 1.0
@@ -277,7 +277,6 @@ in
               "Mod+C" { spawn "editor"; }
               "Mod+F" { spawn "firefox"; }
               "Mod+A" { spawn "antigravity"; }
-              "Mod+Z" { spawn "zen-beta"; }
               "Mod+G" { spawn "launcher" "games"; }
               "Mod+Alt+G" { spawn "${getExe gamemode}"; }
               "Alt+F4" { close-window; }

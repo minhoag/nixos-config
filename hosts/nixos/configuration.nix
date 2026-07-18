@@ -43,8 +43,6 @@ in
     "${self}/modules/programs/editor/opencode"
     # "${self}/modules/programs/editor/antigravity"
     # "${self}/modules/programs/editor/cursor"
-    # "${self}/modules/programs/browser/zen"
-    # "${self}/modules/programs/browser/vimb"
     # "${self}/modules/programs/cli/direnv"
     "${self}/modules/programs/terminal/fastfetch"
     # "${self}/modules/programs/tuning/cpufreq"

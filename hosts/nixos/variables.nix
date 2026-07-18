@@ -6,7 +6,7 @@
   desktop = "niri";
   terminal = "foot"; # Options: foot, kitty
   editor = "neovim"; # Options: vscode, antigravity, neovim
-  browser = "firefox"; # Options: firefox, zen
+  browser = "firefox";
   tuiFileManager = "yazi"; # Options: yazi, lf
   shell = "fish"; # Options: fish, zsh, bash
   games = true; # Whether to enable the gaming module
