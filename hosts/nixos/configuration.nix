@@ -39,7 +39,8 @@ in
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix
     "${self}/modules/programs/editor/${vars.editor}" # Set editor defined in variables.nix
     "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
-    "${self}/modules/programs/editor/vscode"
+    # "${self}/modules/programs/editor/vscode"
+    "${self}/modules/programs/editor/cursor"
     "${self}/modules/programs/editor/opencode"
     # "${self}/modules/programs/editor/cursor"
     "${self}/modules/programs/terminal/fastfetch"

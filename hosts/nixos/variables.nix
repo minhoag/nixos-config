@@ -4,7 +4,7 @@
   gitUsername = "hoang.nguyen";
   gitEmail = "nhoang120899@gmail.com";
   desktop = "niri";
-  terminal = "foot"; # Options: foot, kitty
+  terminal = "kitty"; # Options: foot, kitty
   editor = "neovim"; # Options: vscode, neovim
   browser = "firefox";
   tuiFileManager = "yazi"; # Options: yazi, lf
