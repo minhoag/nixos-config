@@ -9,7 +9,6 @@ in
     ./host-packages.nix
 
     # Core Modules (Don't change unless you know what you're doing)
-    "${self}/modules/core/adblock"
     "${self}/modules/core/boot"
     "${self}/modules/core/bash"
     "${self}/modules/core/fish"
