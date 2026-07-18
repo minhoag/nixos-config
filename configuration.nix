@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -52,46 +52,59 @@
   users.users."wumps" = {
     isNormalUser = true;
     description = "wumps";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-gh
-
-     ghostty
-     firefox
-     fuzzel
-     mako
-     swaybg
-     swayidle
-     swaylock
-     xwayland-satellite
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    gh
+    ghostty
+    firefox
+    fuzzel
+    mako
+    swaybg
+    swayidle
+    swaylock
+    xwayland-satellite
+    pkgs.opencode
   ];
   # Niri installation
   programs.niri.enable = true;
-  services.greetd = {
-	enable = true;
-	settings.default_session = {
-		command = "${pkgs.niri}/bin/niri-session";
-
-		user = "wumps";
-	};
+  programs.dms-shell = {
+    enable = true;
+    systemd.enable = true;
   };
-programs.dms-shell = {
-	enable = true;
-	systemd.enable = true;
-};
-  security.polkit.enable = true;  
-services.power-profiles-daemon.enable = true;
-# Some programs need SUID wrappers, can be configured further or are
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true; # Master switch, already covered in installation
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
+    # Other general flags if available can be set here.
+  };
+  security.polkit.enable = true;
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.niri}/bin/niri-session";
+
+      user = "wumps";
+    };
+  };
+  services.power-profiles-daemon.enable = true;
+  # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
