@@ -10,6 +10,7 @@ let
 in
 {
 
+
   # Graphics Configuration
   hardware.graphics = {
     enable = true;
@@ -23,12 +24,14 @@ in
     # bottles
     # ryujinx
     # prismlauncher
+
     steam-run
     wineWow64Packages.staging
   ];
 
   # User groups configuration
   users.users.${username}.extraGroups = [ "gamemode" ];
+
   # Programs & Gaming Configurations
   programs = {
     # Integrated GameMode with custom hooks and optimizations
@@ -36,22 +39,24 @@ in
       enable = true;
       settings = {
         general = {
-          renice = 10; # Sets nice priority of the game to -10 (high priority)
-          ioprio = 0; # Gives games the highest I/O scheduling priority
-          inhibit_screensaver = 1; # Stops screensavers or monitors turning off while playing
+          renice = 10;                # Sets nice priority of the game to -10 (high priority)
+          ioprio = 0;                 # Gives games the highest I/O scheduling priority
+          inhibit_screensaver = 1;    # Stops screensavers or monitors turning off while playing
         };
+
         custom = {
           start = "${pkgs.libnotify}/bin/notify-send 'GameMode' 'Optimizations activated. Performance governor engaged.'";
           end = "${pkgs.libnotify}/bin/notify-send 'GameMode' 'Optimizations deactivated. Balanced governor restored.'";
         };
+
         # Optional GPU Optimizations (Uncomment if using a dedicated graphics card)
-        gpu = {
-          apply_gpu_optimisations = "accept-responsibility";
-          gpu_vendor = "amd"; # Choose: amd or nvidia
-          amd_performance_level = "high";
-          # nv_core_clock_mhz_offset = 100;
-          # nv_mem_clock_mhz_offset = 100;
-        };
+        # gpu = {
+        #   apply_gpu_optimisations = "accept-responsibility";
+        #   gpu_vendor = "amd"; # Choose: amd or nvidia
+        #   amd_performance_level = "high";
+        #   nv_core_clock_mhz_offset = 100;
+        #   nv_mem_clock_mhz_offset = 100;
+        # };
       };
     };
 
@@ -95,9 +100,10 @@ in
             165
             240
           ];
-          fps_limit_method = "early"; # late = low input lag but less smooth, early = more smooth
+          fps_limit_method = "late"; # late = low input lag but less smooth, early = more smooth
           vsync = 2; # https://github.com/flightlessmango/MangoHud#vsync
           gl_vsync = 1; # https://github.com/flightlessmango/MangoHud#vsync
+
           # Keybinds
           toggle_hud = "Shift_R+F12";
           # toggle_hud_position="Shift_R+F11";
@@ -105,6 +111,7 @@ in
           # toggle_logging="Shift_L+F2";
           # reload_cfg="Shift_L+F4";
           # upload_log="Shift_L+F3";
+
           # SYSTEM
           fps = true;
           show_fps_limit = true;
@@ -115,12 +122,14 @@ in
           ram = true;
           # swap
           # core_load_change
+
           # CPU
           cpu_stats = true;
           cpu_temp = true;
           cpu_power = true;
           cpu_text = "CPU";
           cpu_mhz = true;
+
           # GPU
           throttling_status = true;
           gpu_stats = true;

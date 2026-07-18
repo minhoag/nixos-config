@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
 {
   # 1. Swap/zRAM Configuration (highly recommended for systemd-oomd)

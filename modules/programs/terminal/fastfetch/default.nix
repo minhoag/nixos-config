@@ -1,55 +1,117 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+
+let
+  # Extract Stylix colors dynamically
+  stylixColors = config.lib.stylix.colors or { };
+
+  # Map labels directly to your Catppuccin palette strings
+  # Utilizing standard base16 mapping conventions
+  labels = "#${stylixColors.base0E or "cba6f7"}"; # Mauve (Primary Accent)
+  kernelCol = "#${stylixColors.base0D or "89b4fa"}"; # Blue
+  uptimeCol = "#${stylixColors.base0B or "a6e3a1"}"; # Green
+  pkgsCol = "#${stylixColors.base08 or "f38ba8"}"; # Red
+  shellCol = "#${stylixColors.base0A or "f9e2af"}"; # Yellow
+  cpuCol = "#${stylixColors.base0C or "89dceb"}"; # Sapphire
+  gpuCol = "#${stylixColors.base0C or "89dceb"}"; # Sapphire
+  memCol = "#${stylixColors.base0F or "f5c2e7"}"; # Pink
+  wmCol = "#${stylixColors.base09 or "fab387"}"; # Peach
+  termCol = "#${stylixColors.base07 or "b4befe"}"; # Lavender
+in
 {
   home-manager.sharedModules = [
     (_: {
-
-      programs.kitty = {
+      programs.fastfetch = {
         enable = true;
-        themeFile = "Catppuccin-Mocha";
-        font = {
-          size = pkgs.lib.mkForce 14.0;
-          name = pkgs.lib.mkForce "JetBrainsMono Nerd Font";
-        };
-
-        # Keep non-color behavioral settings and tab structures
+        package = pkgs.fastfetch;
         settings = {
-          strip_trailing_spaces = "smart";
-          macos_option_as_alt = "yes";
-          macos_quit_when_last_window_closed = true;
-          copy_on_select = "yes";
-          confirm_os_window_close = 0;
-          scrollback_lines = 10000;
-          enable_audio_bell = false;
-          mouse_hide_wait = 60;
-          update_check_interval = 0;
+          "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
 
-          ## Tabs Structure (Stylix will color these automatically)
-          tab_title_template = "{index}";
-          active_tab_font_style = "normal";
-          inactive_tab_font_style = "normal";
-          tab_bar_style = "powerline";
-          tab_powerline_style = "round";
-        };
+          logo = {
+            source = ./nixos-logo.png;
+            type = "sixel";
+            /*
+              padding = {
+                top = 2;
+                right = 4;
+              };
+            */
+          };
 
-        keybindings = {
-          "ctrl+alt+n" = "launch --cwd=current";
-          "alt+w" = "copy_and_clear_or_interrupt";
-          "ctrl+y" = "paste_from_clipboard";
-          "alt+1" = "goto_tab 1";
-          "alt+2" = "goto_tab 2";
-          "alt+3" = "goto_tab 3";
-          "alt+4" = "goto_tab 4";
-          "alt+5" = "goto_tab 5";
-          "alt+6" = "goto_tab 6";
-          "alt+7" = "goto_tab 7";
-          "alt+8" = "goto_tab 8";
-          "alt+9" = "goto_tab 9";
-          "alt+0" = "goto_tab 10";
+          display = {
+            separator = " ── ";
+            color = {
+              keys = "#${stylixColors.base0E or "cba6f7"}"; # Mauve Accent Separator
+              title = "#${stylixColors.base05 or "cdd6f4"}"; # Default Text White
+            };
+          };
 
-          # Tmux
-          "ctrl+t" = "launch --cwd=current --type=overlay tmux-sessionizer";
-          "ctrl+shift+left" = "no_op";
-          "ctrl+shift+right" = "no_op";
+          modules = [
+            {
+              type = "title";
+              color = {
+                user = "#${stylixColors.base0E or "cba6f7"}"; # Mauve
+                host = "#${stylixColors.base0F or "f5c2e7"}"; # Pink
+              };
+            }
+            "break"
+            {
+              type = "os";
+              key = "󱄅 os";
+              keyColor = labels;
+            }
+            {
+              type = "kernel";
+              key = "󰌽 kernel";
+              keyColor = kernelCol;
+            }
+            {
+              type = "uptime";
+              key = "󱎫 uptime";
+              keyColor = uptimeCol;
+            }
+            {
+              type = "packages";
+              key = "󰏖 packages";
+              keyColor = pkgsCol;
+            }
+            {
+              type = "shell";
+              key = "󱆃 shell";
+              keyColor = shellCol;
+            }
+            "break"
+            {
+              type = "cpu";
+              key = "󰻠 cpu";
+              keyColor = cpuCol;
+            }
+            {
+              type = "gpu";
+              key = "󰢮 gpu";
+              keyColor = gpuCol;
+            }
+            {
+              type = "memory";
+              key = "󰍛 memory";
+              keyColor = memCol;
+            }
+            {
+              type = "wm";
+              key = " wm";
+              keyColor = wmCol;
+            }
+            {
+              type = "terminal";
+              key = " terminal";
+              keyColor = termCol;
+            }
+            "break"
+            {
+              type = "colors";
+              symbol = "circle";
+              paddingLeft = 2;
+            }
+          ];
         };
       };
     })

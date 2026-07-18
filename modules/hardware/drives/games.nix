@@ -1,9 +1,9 @@
 { lib, ... }:
 {
   # change according to your partition name and format
-  fileSystems."/mnt/Games" = lib.mkForce {
-    device = "/dev/disk/by-uuid/0aa3a390-9d56-41f3-ba93-cd4d7568dd29"; # get drive uuid from `lsblk -o UUID,LABEL,FSTYPE,MOUNTPOINT`
-    fsType = "ext4";
+  fileSystems."/mnt/Data" = lib.mkForce {
+    device = "/dev/disk/by-uuid/fcd8693d-39c7-49cc-a9de-c18d15f2d69d";
+    fsType = "btrfs";
     options = [
       "rw"
       "defaults" # Default flags

@@ -2,6 +2,6 @@
 {
   imports = [
     ./games.nix
-    # ./work.nix
+    ./work.nix
   ];
 }

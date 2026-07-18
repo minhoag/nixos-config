@@ -1,9 +1,4 @@
-{
-  self,
-  host,
-  inputs,
-  ...
-}:
+{ self, host, inputs, ... }:
 let
   inherit (import "${self}/hosts/${host}/variables.nix") sddmTheme;
 in

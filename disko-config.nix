@@ -1,8 +1,4 @@
-{
-  disk ? "/dev/sda",
-  ...
-}:
-{
+{ disk ? "/dev/sda", ... }: {
   disko.devices = {
     disk = {
       main = {
@@ -30,24 +26,15 @@
                 subvolumes = {
                   "@" = {
                     mountpoint = "/";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                   };
                   "@home" = {
                     mountpoint = "/home";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                   };
                   "@nix" = {
                     mountpoint = "/nix";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                   };
                 };
               };

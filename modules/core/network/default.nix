@@ -1,9 +1,4 @@
-{
-  self,
-  host,
-  pkgs,
-  ...
-}:
+{ self, host, pkgs, ... }:
 let
   inherit (import "${self}/hosts/${host}/variables.nix") hostname;
 in
@@ -23,8 +18,14 @@ in
         22 # SSH (Secure Shell) - remote access
         80 # HTTP - web traffic
         443 # HTTPS - encrypted web traffic
+        59010 # Custom application port
+        59011 # Custom application port
+        8080 # Alternative HTTP/web server port
       ];
-      allowedUDPPorts = [ ];
+      allowedUDPPorts = [
+        59010 # Custom application port
+        59011 # Custom application port
+      ];
     };
   };
 
