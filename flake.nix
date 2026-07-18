@@ -158,7 +158,7 @@
       };
 
       nixosConfigurations = {
-        default = mkHost "default";
+        nixos = mkHost "nixos";
       };
     };
 }

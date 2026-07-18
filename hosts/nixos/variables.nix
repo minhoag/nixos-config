@@ -1,8 +1,8 @@
 {
   # User Configuration
-  username = "annmaro";
-  gitUsername = "annmaro";
-  gitEmail = "anandk60440@gmail.com";
+  username = "wumps";
+  gitUsername = "hoang.nguyen";
+  gitEmail = "nhoang120899@gmail.com";
   desktop = "niri";
   terminal = "foot"; # Options: foot, kitty
   editor = "neovim"; # Options: vscode, antigravity, neovim
@@ -12,8 +12,8 @@
   games = true; # Whether to enable the gaming module
 
   # Hardware Configuration
-  videoDriver = "intel"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
-  hostname = "nixri"; # Your system hostname
+  videoDriver = "amdgpu"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
+  hostname = "nixos"; # Your system hostname
 
   # Localization
   clock24h = true; # 24H or 12H clock in waybar
