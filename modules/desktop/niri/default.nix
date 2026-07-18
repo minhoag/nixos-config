@@ -239,7 +239,7 @@ in
           }
 
           window-rule {
-              match app-id="^(Emacs|obsidian|proton.vpn.app.gtk|heroic|lutris|discord|webcord|vesktop|nvim-wrapper|VSCodium|code|thunar)$"
+              match app-id="^(Emacs|obsidian|heroic|lutris|nvim-wrapper|VSCodium|code|thunar)$"
               opacity 0.85
               draw-border-with-background false
               background-effect {
