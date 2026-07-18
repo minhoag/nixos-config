@@ -28,14 +28,14 @@
     libjxl # Support for JXL Images
     microfetch # Small fetch (Blazingly fast)
     nix-prefetch-scripts # Find Hashes/Revisions of Nix Packages
-    ripgrep # Improved Grep
-    tldr # Improved Man
+    # ripgrep # Improved Grep
+    # tldr # Improved Man
     rimgo # Alternative frontend for Imgurss
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     peazip # File and archive manager
-    calibre # Comprehensive e-book software
-    vivaldi # Browser for our Friends, powerful and personal
+    # calibre # Comprehensive e-book software
+    # vivaldi # Browser for our Friends, powerful and personal
     pdf4qt # Open source PDF editor
     nicotine-plus # Graphical client for the SoulSeek peer-to-peer system
     easyeffects # Audio effects for PipeWire applications
@@ -43,11 +43,11 @@
     nix-tree # Interactively browse a Nix store paths dependencies
     imagemagickBig # Software suite to create, edit, compose, or convert bitmap images
     nomacs # Qt-based image viewer
-    epiphany # WebKit based web browser
+    # epiphany # WebKit based web browser
     # digikam # Photo management application
-    gapless # Beautiful, fast, fluent, light weight music player written in GTK4
-    spek # Acoustic spectrum analyser for audio files
-    losslessaudiochecker # Utility to check whether audio is truly lossless or not
+    # gapless # Beautiful, fast, fluent, light weight music player written in GTK4
+    # spek # Acoustic spectrum analyser for audio files
+    # losslessaudiochecker # Utility to check whether audio is truly lossless or not
     qbittorrent # Featureful free software BitTorrent client
     libreoffice-fresh # Comprehensive, professional-quality productivity suite
     android-tools # Android SDK platform tools
@@ -55,7 +55,6 @@
     age # Modern encryption tool with small explicit keys
     xdg-utils # Set of command line tools that assist applications with a variety of desktop integration tasks
     eza # Enhanced `ls` command replacement
-    tor-browser # Privacy-focused browser routing traffic through the Tor network
     # aider-chat # AI in terminal (Optional: Client only)
     # cmatrix # Matrix Movie Effect In Terminal
     # cowsay # Great Fun Terminal Program
@@ -69,7 +68,7 @@
     ncdu # Disk Usage Analyzer With Ncurses Interface
     nixfmt # Nix Formatter
     # nwg-displays # configure monitor configs via GUI
-    # pavucontrol # For Editing Audio Levels & Devices
+    pavucontrol # For Editing Audio Levels & Devices
     # pciutils # Collection Of Tools For Inspecting PCI Devices
     # picard # For Changing Music Metadata & Getting Cover Art
     # pkg-config # Wrapper Script For Allowing Packages To Get Info On Others

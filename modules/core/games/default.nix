@@ -10,7 +10,6 @@ let
 in
 {
 
-
   # Graphics Configuration
   hardware.graphics = {
     enable = true;
@@ -39,9 +38,9 @@ in
       enable = true;
       settings = {
         general = {
-          renice = 10;                # Sets nice priority of the game to -10 (high priority)
-          ioprio = 0;                 # Gives games the highest I/O scheduling priority
-          inhibit_screensaver = 1;    # Stops screensavers or monitors turning off while playing
+          renice = 10; # Sets nice priority of the game to -10 (high priority)
+          ioprio = 0; # Gives games the highest I/O scheduling priority
+          inhibit_screensaver = 1; # Stops screensavers or monitors turning off while playing
         };
 
         custom = {
@@ -50,13 +49,13 @@ in
         };
 
         # Optional GPU Optimizations (Uncomment if using a dedicated graphics card)
-        # gpu = {
-        #   apply_gpu_optimisations = "accept-responsibility";
-        #   gpu_vendor = "amd"; # Choose: amd or nvidia
-        #   amd_performance_level = "high";
-        #   nv_core_clock_mhz_offset = 100;
-        #   nv_mem_clock_mhz_offset = 100;
-        # };
+        gpu = {
+          apply_gpu_optimisations = "accept-responsibility";
+          gpu_vendor = "amd"; # Choose: amd or nvidia
+          amd_performance_level = "high";
+          # nv_core_clock_mhz_offset = 100;
+          # nv_mem_clock_mhz_offset = 100;
+        };
       };
     };
 
