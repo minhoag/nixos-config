@@ -22,13 +22,11 @@ let
   fileManagerScript = pkgs.callPackage ./scripts/file-manager.nix { inherit terminal; };
   gamemode = pkgs.callPackage ./scripts/gamemode.nix { };
   wallpaper = pkgs.callPackage ./scripts/wallpaper.nix { };
-  keybindsRofi = pkgs.callPackage ./scripts/keybinds-rofi.nix { };
   screenRecorder = pkgs.callPackage ./scripts/screen-record.nix { };
 in
 {
   imports = [
     ./dms
-    ./rofi
     ./stylix
     ./swaylock
   ];
@@ -200,11 +198,6 @@ in
                }
            }           
 
-           layer-rule {
-               match namespace="^rofi$"
-               geometry-corner-radius 12
-           }
-
           // Force normal, realistic blur for DankMaterialShell popups and panels
           layer-rule {
                match namespace=r#"^dms:.*"#
@@ -287,10 +280,7 @@ in
               "Mod+C" { spawn "editor"; }
               "Mod+F" { spawn "firefox"; }
               "Mod+A" { spawn "antigravity"; }
-              "Mod+Space" { spawn "rofi" "-show" "drun"; }
-              "Mod+V" { spawn "rofi" "-show" "clipboard"; }
               "Mod+Z" { spawn "zen-beta"; }
-              "Mod+Shift+K" { spawn "${getExe keybindsRofi}"; }
               "Mod+G" { spawn "launcher" "games"; }
               "Mod+Alt+G" { spawn "${getExe gamemode}"; }
               "Alt+F4" { close-window; }
@@ -308,7 +298,6 @@ in
               "Mod+Escape" { spawn "pkill" "-SIGINT" "-x" "wf-recorder"; }
               "Mod+Backspace" { spawn "sh" "-c" "pkill -x wlogout || wlogout -b 4"; }
               "Mod+Shift+S" { spawn "spotify"; }
-              "Mod+Shift+P" { spawn "rofi-powermenu"; }
               "Mod+Shift+Y" { spawn "youtube-music"; }
               "Ctrl+Alt+Delete" { spawn "ghostty" "-e" "btop"; }
               "Mod+Ctrl+C" { spawn "hyprpicker" "--autocopy" "--format=hex"; }
@@ -369,7 +358,6 @@ in
               "XF86AudioNext" { spawn "playerctl" "next"; }
               "XF86AudioPrev" { spawn "playerctl" "previous"; }
               "XF86Sleep" { spawn "systemctl" "suspend"; }
-              "Mod+P" { spawn "rofi-rbw"; }
               "Mod+Ctrl+P" { spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"; }
           }
         '';
