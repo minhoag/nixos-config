@@ -30,7 +30,6 @@ in
     "${self}/modules/core/flatpak"
     "${self}/modules/core/xdg"
     # "${self}/modules/core/dlna.nix"
-
     # Optional
     #"${self}/modules/hardware/drives" # Auto-mounts the internal/external drives
     "${self}/modules/hardware/video/${vars.videoDriver}.nix" # Enable gpu drivers defined in variables.nix

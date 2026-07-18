@@ -3,6 +3,7 @@
   imports = [
     ./dms
     ./swaylock
+    ./cursor
   ];
 
   programs.niri.enable = true;
@@ -13,7 +14,7 @@
   home-manager.sharedModules = [
     {
       imports = [ inputs.niri.homeModules.niri ];
-      programs.niri.settings = { };
+      programs.niri.settings.overview.workspace-shadow.enable = false;
     }
   ];
 }

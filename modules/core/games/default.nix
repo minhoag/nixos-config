@@ -25,6 +25,7 @@ in
     # prismlauncher
 
     steam-run
+    protonup-qt
     wineWow64Packages.staging
   ];
 
@@ -51,7 +52,7 @@ in
         # Optional GPU Optimizations (Uncomment if using a dedicated graphics card)
         gpu = {
           apply_gpu_optimisations = "accept-responsibility";
-          gpu_vendor = "amd"; # Choose: amd or nvidia
+          gpu_device = 1; # card1 is the dedicated RX 6800 XT; card0 is the Ryzen iGPU
           amd_performance_level = "high";
           # nv_core_clock_mhz_offset = 100;
           # nv_mem_clock_mhz_offset = 100;
@@ -84,7 +85,8 @@ in
     (_: {
       programs.mangohud = {
         enable = true;
-        enableSessionWide = true;
+        # Avoid injecting frame limiting and present-mode overrides into every app.
+        enableSessionWide = false;
         settingsPerApplication = {
           mpv = {
             no_display = true;
@@ -93,15 +95,14 @@ in
         settings = {
           no_display = true; # Hide hud by default (Show by holding right-shift then press F12)
           fps_limit = [
-            60
             0
+            60
             144
             165
             240
+            360
           ];
           fps_limit_method = "late"; # late = low input lag but less smooth, early = more smooth
-          vsync = 2; # https://github.com/flightlessmango/MangoHud#vsync
-          gl_vsync = 1; # https://github.com/flightlessmango/MangoHud#vsync
 
           # Keybinds
           toggle_hud = "Shift_R+F12";

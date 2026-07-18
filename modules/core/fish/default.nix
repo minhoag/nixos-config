@@ -1,5 +1,8 @@
 { self, pkgs, ... }:
 {
+  # Register Fish system-wide so login-shell checks used by pkexec succeed.
+  programs.fish.enable = true;
+
   home-manager.sharedModules = [
     (
       { config, ... }:
@@ -11,18 +14,18 @@
 
         programs.fish = {
           enable = true;
-          
+
           interactiveShellInit = ''
             # Key Bindings
             bind \ca beginning-of-line
             bind \ce end-of-line
-            
+
             # Environment variables
             set -q XDG_CONFIG_HOME; and set -gx XMONAD_CONFIG_DIR "$XDG_CONFIG_HOME/xmonad"; or set -gx XMONAD_CONFIG_DIR "$HOME/.config/xmonad"
             set -q XDG_DATA_HOME; and set -gx XMONAD_DATA_DIR "$XDG_DATA_HOME/xmonad"; or set -gx XMONAD_DATA_DIR "$HOME/.local/share/xmonad"
             set -q XDG_CACHE_HOME; and set -gx XMONAD_CACHE_DIR "$XDG_CACHE_HOME/xmonad"; or set -gx XMONAD_CACHE_DIR "$HOME/.cache/xmonad"
             set -gx FZF_DEFAULT_OPTS " --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-            
+
             # Override autosuggestion color to green
             set -g fish_color_autosuggestion green
 
