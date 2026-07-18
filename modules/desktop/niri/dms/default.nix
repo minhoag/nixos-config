@@ -10,6 +10,10 @@
         enable = true;
         systemd.enable = true;
         enableCalendarEvents = false;
+        settings = {
+          useAutoLocation = true;
+          weatherEnabled = true;
+        };
       };
     })
   ];

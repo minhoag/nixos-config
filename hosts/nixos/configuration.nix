@@ -49,6 +49,7 @@ in
     # "${self}/modules/programs/media/youtube-music"
     # "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
+    "${self}/modules/programs/media/phonto"
     # "${self}/modules/programs/tuning/tlp"
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
   ]
