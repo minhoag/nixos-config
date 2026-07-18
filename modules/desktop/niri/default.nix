@@ -239,7 +239,7 @@ in
           }
 
           window-rule {
-              match app-id="^(Emacs|obsidian|proton.vpn.app.gtk|heroic|lutris|discord|webcord|vesktop|nvim-wrapper|antigravity|VSCodium|code|thunar)$"
+              match app-id="^(Emacs|obsidian|proton.vpn.app.gtk|heroic|lutris|discord|webcord|vesktop|nvim-wrapper|VSCodium|code|thunar)$"
               opacity 0.85
               draw-border-with-background false
               background-effect {
@@ -276,7 +276,6 @@ in
               "Ctrl+T" { spawn "footclient" "-a" "tmux-sessionizer" "-e" "tmux-sessionizer"; }
               "Mod+C" { spawn "editor"; }
               "Mod+F" { spawn "firefox"; }
-              "Mod+A" { spawn "antigravity"; }
               "Mod+G" { spawn "launcher" "games"; }
               "Mod+Alt+G" { spawn "${getExe gamemode}"; }
               "Alt+F4" { close-window; }

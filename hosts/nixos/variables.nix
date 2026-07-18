@@ -5,7 +5,7 @@
   gitEmail = "nhoang120899@gmail.com";
   desktop = "niri";
   terminal = "foot"; # Options: foot, kitty
-  editor = "neovim"; # Options: vscode, antigravity, neovim
+  editor = "neovim"; # Options: vscode, neovim
   browser = "firefox";
   tuiFileManager = "yazi"; # Options: yazi, lf
   shell = "fish"; # Options: fish, zsh, bash

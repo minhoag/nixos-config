@@ -88,9 +88,6 @@ with lib;
             "x-scheme-handler/http" = [ "firefox.desktop" ];
             "x-scheme-handler/https" = [ "firefox.desktop" ];
 
-            # Antigravity Auth Handler
-            "x-scheme-handler/antigravity" = [ "antigravity.desktop" ];
-
             # Terminal
             "application/x-terminal-emulator" = [ "footclient.desktop" ];
             "x-scheme-handler/terminal" = [ "footclient.desktop" ];

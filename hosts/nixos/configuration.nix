@@ -41,7 +41,6 @@ in
     "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
     "${self}/modules/programs/editor/vscode"
     "${self}/modules/programs/editor/opencode"
-    # "${self}/modules/programs/editor/antigravity"
     # "${self}/modules/programs/editor/cursor"
     "${self}/modules/programs/terminal/fastfetch"
     # "${self}/modules/programs/tuning/cpufreq"
