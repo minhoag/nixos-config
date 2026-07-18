@@ -48,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    phonto = {
+      url = "github:museslabs/phonto";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =

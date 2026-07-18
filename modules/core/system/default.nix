@@ -68,7 +68,7 @@ in
     optimise.automatic = true;
     package = pkgs.nixVersions.latest;
   };
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = "Asia/Ho_Chi_Minh";
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [

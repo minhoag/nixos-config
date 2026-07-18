@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 {
   home-manager.sharedModules = [
-    {
-      home.packages = [ inputs.phonto.packages.${pkgs.system}.phonto ];
-    }
+    ({ pkgs, ... }: {
+      home.packages = [ inputs.phonto.packages.${pkgs.stdenv.hostPlatform.system}.phonto ];
+    })
   ];
 }
