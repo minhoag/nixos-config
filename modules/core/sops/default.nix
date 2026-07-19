@@ -35,6 +35,8 @@ in
           git_email = { };
           git_key_id = { };
           gemini_api_key = { };
+          vilao_api_key = { };
+          sakana_api_key = { };
         };
 
         sops.templates.git-identity = lib.mkIf haveSecrets {
@@ -42,10 +44,6 @@ in
             [user]
               email = ${config.sops.placeholder.git_email}
               signingkey = ${config.sops.placeholder.git_key_id}
-            [commit]
-              gpgsign = true
-            [tag]
-              gpgsign = true
           '';
           mode = "0600";
         };
@@ -62,12 +60,23 @@ in
             gemini() {
               env GEMINI_API_KEY="$(<${config.sops.secrets.gemini_api_key.path})" gemini "$@"
             }
+
+            opencode() {
+              env VILAO_API_KEY="$(<${config.sops.secrets.vilao_api_key.path})" opencode "$@"
+              env SAKANA_API_KEY="$(<${config.sops.secrets.sakana_api_key.path})" opencode "$@"
+            }
           ''
         );
 
         programs.fish.functions.gemini = lib.mkIf haveSecrets {
           body = ''
             env GEMINI_API_KEY=(cat ${config.sops.secrets.gemini_api_key.path}) gemini $argv
+          '';
+        };
+
+        programs.fish.functions.opencode = lib.mkIf haveSecrets {
+          body = ''
+            env VILAO_API_KEY=(cat ${config.sops.secrets.vilao_api_key.path}) opencode $argv
           '';
         };
       }

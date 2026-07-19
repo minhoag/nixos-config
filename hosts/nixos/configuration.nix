@@ -39,16 +39,16 @@ in
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix
     "${self}/modules/programs/editor/${vars.editor}" # Set editor defined in variables.nix
     "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
+    "${self}/modules/programs/cli/gh" # Install GitHub CLI
     # "${self}/modules/programs/editor/vscode"
     "${self}/modules/programs/editor/cursor"
     "${self}/modules/programs/editor/opencode"
-    # "${self}/modules/programs/editor/cursor"
     "${self}/modules/programs/terminal/fastfetch"
     # "${self}/modules/programs/tuning/cpufreq"
     "${self}/modules/programs/cli/btop"
-    # "${self}/modules/programs/media/discord"
-    # "${self}/modules/programs/media/youtube-music"
-    # "${self}/modules/programs/media/obs-studio"
+    "${self}/modules/programs/media/discord"
+    "${self}/modules/programs/media/youtube-music"
+    "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
     "${self}/modules/programs/media/phonto"
     # "${self}/modules/programs/tuning/tlp"
