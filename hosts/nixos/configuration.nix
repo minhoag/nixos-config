@@ -47,7 +47,6 @@ in
     # "${self}/modules/programs/tuning/cpufreq"
     "${self}/modules/programs/cli/btop"
     "${self}/modules/programs/media/discord"
-    "${self}/modules/programs/media/yt-music"
     "${self}/modules/programs/media/obs-studio"
     "${self}/modules/programs/media/mpv"
     "${self}/modules/programs/media/phonto"
