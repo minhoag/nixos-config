@@ -23,6 +23,7 @@ in
     "${self}/modules/core/sddm"
     "${self}/modules/core/security"
     "${self}/modules/core/services"
+    "${self}/modules/core/sops"
     # "${self}/modules/core/syncthing"
     "${self}/modules/core/system"
     "${self}/modules/core/thunar"
