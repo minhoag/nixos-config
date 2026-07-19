@@ -22,61 +22,21 @@ in
         };
 
         sops.secrets = lib.mkIf haveSecrets {
-          private_ssh_key = {
-            path = "${config.home.homeDirectory}/.ssh/id_ed25519";
-            mode = "0600";
-          };
-
-          rclone_gdrive_env = {
-            path = "${config.home.homeDirectory}/.config/rclone/gdrive.env";
-            mode = "0600";
-          };
-
-          git_email = { };
-          git_key_id = { };
-          gemini_api_key = { };
           vilao_api_key = { };
           sakana_api_key = { };
         };
 
-        sops.templates.git-identity = lib.mkIf haveSecrets {
-          content = ''
-            [user]
-              email = ${config.sops.placeholder.git_email}
-              signingkey = ${config.sops.placeholder.git_key_id}
-          '';
-          mode = "0600";
-        };
-
-        programs.git = lib.mkIf haveSecrets {
-          enable = true;
-          includes = [
-            { path = config.sops.templates.git-identity.path; }
-          ];
-        };
-
         programs.bash.initExtra = lib.mkIf haveSecrets (
           lib.mkAfter ''
-            gemini() {
-              env GEMINI_API_KEY="$(<${config.sops.secrets.gemini_api_key.path})" gemini "$@"
-            }
-
             opencode() {
-              env VILAO_API_KEY="$(<${config.sops.secrets.vilao_api_key.path})" opencode "$@"
-              env SAKANA_API_KEY="$(<${config.sops.secrets.sakana_api_key.path})" opencode "$@"
+              env VILAO_API_KEY="$(<${config.sops.secrets.vilao_api_key.path})" SAKANA_API_KEY="$(<${config.sops.secrets.sakana_api_key.path})" opencode "$@"
             }
           ''
         );
 
-        programs.fish.functions.gemini = lib.mkIf haveSecrets {
-          body = ''
-            env GEMINI_API_KEY=(cat ${config.sops.secrets.gemini_api_key.path}) gemini $argv
-          '';
-        };
-
         programs.fish.functions.opencode = lib.mkIf haveSecrets {
           body = ''
-            env VILAO_API_KEY=(cat ${config.sops.secrets.vilao_api_key.path}) opencode $argv
+            env VILAO_API_KEY=(cat ${config.sops.secrets.vilao_api_key.path}) SAKANA_API_KEY=(cat ${config.sops.secrets.sakana_api_key.path}) opencode $argv
           '';
         };
       }
