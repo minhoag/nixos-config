@@ -251,7 +251,7 @@
     "rememberLastMode": true,
     "spotlightSectionViewModes": {},
     "appDrawerSectionViewModes": {},
-    "niriOverviewOverlayEnabled": true,
+    "niriOverviewOverlayEnabled": false,
     "dankLauncherV2Size": "compact",
     "dankLauncherV2ShowSourceBadges": true,
     "dankLauncherV2BorderEnabled": false,

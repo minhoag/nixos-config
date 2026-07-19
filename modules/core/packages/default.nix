@@ -31,6 +31,7 @@
     libjxl # Support for JXL Images
     microfetch # Small fetch (Blazingly fast)
     nix-prefetch-scripts # Find Hashes/Revisions of Nix Packages
+    sbctl # System Bus Controller Tool - to enable Secure Boot
     # ripgrep # Improved Grep
     # tldr # Improved Man
     rimgo # Alternative frontend for Imgurss

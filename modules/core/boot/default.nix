@@ -1,4 +1,12 @@
 { pkgs, ... }:
+let
+  mac-style-plymouth = pkgs.callPackage (pkgs.fetchFromGitHub {
+    owner = "SergioRibera";
+    repo = "s4rchiso-plymouth-theme";
+    rev = "bc585b7f42af415fe40bece8192d9828039e6e20";
+    hash = "sha256-yOvZ4F5ERPfnSlI/Scf9UwzvoRwGMqZlrHkBIB3Dm/w=";
+  }) { };
+in
 {
   boot = {
     # Filesystems support
@@ -11,6 +19,14 @@
     ];
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+
+    plymouth = {
+      enable = true;
+      theme = "mac-style";
+      themePackages = [ mac-style-plymouth ];
+    };
 
     # Kernel Parameter Tuning for zRAM
     kernel.sysctl = {
@@ -19,6 +35,8 @@
     kernelParams = [
       "preempt=full" # lower latency but less throughput
       "reboot=efi"
+      "quiet"
+      "udev.log_level=3"
     ];
 
     loader = {
@@ -32,6 +50,7 @@
         efiSupport = true;
         efiInstallAsRemovable = false;
         maxGenerations = 5;
+        secureBoot.enable = true;
       };
       timeout = 1;
     };
