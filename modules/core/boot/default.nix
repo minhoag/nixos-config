@@ -18,6 +18,7 @@
     };
     kernelParams = [
       "preempt=full" # lower latency but less throughput
+      "reboot=efi"
     ];
 
     loader = {
@@ -30,9 +31,9 @@
         enable = true;
         efiSupport = true;
         efiInstallAsRemovable = false;
-        maxGenerations = 10;
+        maxGenerations = 5;
       };
-      timeout = 10;
+      timeout = 1;
     };
 
     # Appimage Support
