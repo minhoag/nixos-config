@@ -25,6 +25,7 @@ in
     # prismlauncher
 
     steam-run
+    linux-wallpaperengine
     protonup-qt
     wineWow64Packages.staging
   ];
