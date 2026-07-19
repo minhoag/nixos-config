@@ -106,6 +106,7 @@
             nfu = "nix flake update";
             nfs = "nix flake show";
             nrb = "sudo nixos-rebuild boot --flake .#nixos";
+            nrs = "sudo nixos-rebuild switch --flake .#nixos";
             ncg = "sudo nix-collect-garbage -d";
             ncb = "sudo nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
             games = "cd /mnt/Games/";

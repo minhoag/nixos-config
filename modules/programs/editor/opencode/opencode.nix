@@ -3,12 +3,14 @@
     ({ config, ... }: {
       xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
         "$schema" = "https://opencode.ai/config.json";
-        instructions = [ "${config.xdg.configHome}/opencode/AGENTS.md" ];
+        instructions = [ "${config.xdg.configHome}/opencode/AGENTS.md" ]; # path: ~/.config/opencode/AGENTS.md
         mcp = {
           codegraph = {
             type = "local";
             command = [
-              "codegraph"
+              "npx"
+              "-y"
+              "@colbymchenry/codegraph"
               "serve"
               "--mcp"
             ];

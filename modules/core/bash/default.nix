@@ -105,7 +105,7 @@
             ncg = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
 
             # Directory Shortcuts.
-            dots = "cd ~/nixri/";
+            dots = "cd ~/nixos-config/";
             games = "cd /mnt/Games/";
             work = "cd /mnt/work/";
             media = "cd /mnt/work/media/";

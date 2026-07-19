@@ -62,8 +62,8 @@ in
       ];
       use-xdg-base-directories = false;
       warn-dirty = false;
-      keep-outputs = true;
-      keep-derivations = true;
+      keep-outputs = false;
+      keep-derivations = false;
     };
     optimise.automatic = true;
     package = pkgs.nixVersions.latest;
