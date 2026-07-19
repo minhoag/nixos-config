@@ -8,6 +8,13 @@
       url = "github:gmodena/nix-flatpak?ref=latest";
     };
 
+    sfdx-nix.url = "github:rfaulhaber/sfdx-nix";
+
+    fcitx5-lotus = {
+      url = "github:LotusInputMethod/fcitx5-lotus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
