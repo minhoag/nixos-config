@@ -33,7 +33,7 @@ in
     # "${self}/modules/core/dlna.nix"
     # Optional
     #"${self}/modules/hardware/drives" # Auto-mounts the internal/external drives
-    "${self}/modules/hardware/video/${vars.videoDriver}.nix" # Enable gpu drivers defined in variables.nix
+    "${self}/modules/hardware/video/amdgpu.nix"
     "${self}/modules/desktop/${vars.desktop}" # Set window manager defined in variables.nix
     "${self}/modules/programs/browser/${vars.browser}" # Set browser defined in variables.nix
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix

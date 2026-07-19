@@ -6,7 +6,6 @@
         enable = true;
         package = pkgs.btop.override {
           rocmSupport = true;
-          cudaSupport = true;
         };
         settings = {
           show_gpu_info = "on";

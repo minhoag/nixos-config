@@ -12,7 +12,6 @@
   games = true; # Whether to enable the gaming module
 
   # Hardware Configuration
-  videoDriver = "amdgpu"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
   hostname = "nixos"; # Your system hostname
 
   # Localization
