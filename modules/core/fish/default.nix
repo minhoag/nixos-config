@@ -101,6 +101,7 @@
             # dry-run shortcuts
             nra = "sudo nixos-rebuild dry-activate --flake .#nixos";
             nrd = "nixos-rebuild dry-run --flake .#nixos";
+            nsop = "nix shell nixpkgs#sops -c sops secrets/secrets.yaml";
             # build shortcuts
             nlg = "sudo nixos-rebuild list-generations";
             nfu = "nix flake update";
