@@ -94,25 +94,21 @@
             tpr = "${pkgs.trash-cli}/bin/trash-restore";
             grep = "grep --color=always";
             pokemon = "pokego --random 1-8 --no-title";
-
-            list-gens = "nixos-rebuild list-generations";
+            wp = "hyprctl hyprpaper reload ,";
+            osu = "nh os switch --hostname default";
+            osb = "nh os boot --hostname default";
+            # nix shortcuts
+            # dry-run shortcuts
+            nra = "sudo nixos-rebuild dry-activate --flake .#nixos";
+            nrd = "nixos-rebuild dry-run --flake .#nixos";
+            # build shortcuts
+            nlg = "sudo nixos-rebuild list-generations";
             nfu = "nix flake update";
             nfs = "nix flake show";
-            wp = "hyprctl hyprpaper reload ,";
-            nrs = "sudo nixos-rebuild boot --flake .#default";
-            nhu = "nh os switch --hostname default";
-            nrb = "nh os boot --hostname default";
-            da = "sudo nixos-rebuild dry-activate --flake .#default";
-            dr = "nixos-rebuild dry-run --flake .#default";
-            ncb = "sudo nix-collect-garbage -d";
-            ncg = "sudo nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
-            dots = "cd ~/nixri/";
-            games = "cd /mnt/games/";
-            work = "cd /mnt/work/";
-            media = "cd /mnt/work/media/";
-            projects = "cd /mnt/work/Projects/";
-            proj = "cd /mnt/work/Projects/";
-            dev = "cd /mnt/work/Projects/";
+            nrb = "sudo nixos-rebuild boot --flake .#nixos";
+            ncg = "sudo nix-collect-garbage -d";
+            ncb = "sudo nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
+            games = "cd /mnt/Games/";
           };
         };
       }

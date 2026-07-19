@@ -14,6 +14,11 @@
         enableCalendarEvents = false;
       };
 
+      xdg.configFile."niri/dms/binds.kdl" = {
+        source = ./binds.kdl;
+        force = true;
+      };
+
       home.activation.seedDmsSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         settings="$HOME/.config/DankMaterialShell/settings.json"
 
