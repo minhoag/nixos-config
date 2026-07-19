@@ -1,7 +1,7 @@
 binds {
     // === System & Overview ===
-    Mod+O repeat=false hotkey-overlay-title="Toggle Overview" { toggle-overview; }
-    Mod+Tab repeat=false hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+    Mod+O repeat="false" hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+    Mod+Tab repeat="false" hotkey-overlay-title="Toggle Overview" { toggle-overview; }
     Mod+Shift+Slash hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
 
     // === Application Launchers ===
@@ -44,10 +44,10 @@ binds {
     }
     
     // === System Controls ===
-    Mod+Escape allow-inhibiting=false hotkey-overlay-title="Toggle Shortcut Inhibiting" {
+    Mod+Escape allow-inhibiting="false" hotkey-overlay-title="Toggle Shortcut Inhibiting" {
         toggle-keyboard-shortcuts-inhibit;
     }
-    Mod+Shift+P hotkey-overlay-title="Power Off Monitors" { power-off-monitors; }
+    // Mod+Shift+P hotkey-overlay-title="Power Off Monitors" { power-off-monitors; }
     Mod+Shift+Q hotkey-overlay-title="Power Menu: Toggle" {
         spawn "dms" "ipc" "call" "powermenu" "toggle";
     }
@@ -94,7 +94,7 @@ binds {
     // }
 
     // === Window Management ===
-    Mod+Q repeat=false hotkey-overlay-title="Close Window" { close-window; }
+    Mod+Q repeat="false" hotkey-overlay-title="Close Window" { close-window; }
     Mod+F hotkey-overlay-title="Maximize Column" { maximize-column; }
     Mod+Shift+F hotkey-overlay-title="Toggle Fullscreen Window" { fullscreen-window; }
     Mod+Shift+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }

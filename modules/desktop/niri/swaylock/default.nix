@@ -59,8 +59,6 @@
             ring-wrong-color = "#eb6f92aa";
           };
         };
-
-        # 2. Configure Swayidle (Idling daemon for Niri)
         # 2. Configure Swayidle (Idling daemon for Niri)
         services.swayidle = {
           enable = true;
