@@ -99,18 +99,20 @@
             osb = "nh os boot --hostname default";
             # nix shortcuts
             # dry-run shortcuts
-            nra = "sudo nixos-rebuild dry-activate --flake .#nixos";
-            nrd = "nixos-rebuild dry-run --flake .#nixos";
+            nra = "sudo nixos-rebuild dry-activate --flake /home/wumps/nix-config/#nixos";
+            nrd = "nixos-rebuild dry-run --flake /home/wumps/nix-config/#nixos";
             nsop = "nix shell nixpkgs#sops -c sops secrets/secrets.yaml";
             # build shortcuts
             nlg = "sudo nixos-rebuild list-generations";
             nfu = "nix flake update";
             nfs = "nix flake show";
-            nrb = "sudo nixos-rebuild boot --flake .#nixos";
-            nrs = "sudo nixos-rebuild switch --flake .#nixos";
+            nrb = "sudo nixos-rebuild boot --flake /home/wumps/nix-config/#nixos";
+            nrs = "sudo nixos-rebuild switch --flake /home/wumps/nix-config/#nixos";
             ncg = "sudo nix-collect-garbage -d";
             ncb = "sudo nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
+            # misc shortcuts
             games = "cd /mnt/Games/";
+            cacheclean = "sudo nix-collect-garbage -d; and rm -rf ~/.cache/*; and systemd-tmpfiles --clean --user; and journalctl --vacuum-time=14d; and flatpak uninstall --unused";
           };
         };
       }
