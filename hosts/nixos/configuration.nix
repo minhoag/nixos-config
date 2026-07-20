@@ -38,6 +38,7 @@ in
     "${self}/modules/desktop/${vars.desktop}" # Set window manager defined in variables.nix
     "${self}/modules/programs/browser/${vars.browser}" # Set browser defined in variables.nix
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix
+    "${self}/modules/programs/terminal/termius"
     "${self}/modules/programs/editor/${vars.editor}" # Set editor defined in variables.nix
     "${self}/modules/programs/cli/${vars.tuiFileManager}" # Set file-manager defined in variables.nix
     "${self}/modules/programs/cli/gh" # Install GitHub CLI

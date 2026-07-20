@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./theme.nix ];
+
   programs.firefox.enable = true;
   environment.systemPackages = [
     pkgs.firefoxpwa
