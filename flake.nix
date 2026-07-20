@@ -10,8 +10,8 @@
 
     sfdx-nix.url = "github:rfaulhaber/sfdx-nix";
 
-    fcitx5-lotus = {
-      url = "github:LotusInputMethod/fcitx5-lotus";
+    ibus-bamboo = {
+      url = "github:BambooEngine/ibus-bamboo/v0.8.5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ termius ];
+  environment.systemPackages = [ pkgs.termius ];
 }
