@@ -14,7 +14,10 @@
   home-manager.sharedModules = [
     {
       imports = [ inputs.niri.homeModules.niri ];
-      programs.niri.settings.overview.workspace-shadow.enable = false;
+      programs.niri.settings = {
+        overview.workspace-shadow.enable = false;
+        hotkey-overlay.skip-at-startup = true;
+      };
     }
   ];
 }

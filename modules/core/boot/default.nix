@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   mac-style-plymouth = pkgs.callPackage (pkgs.fetchFromGitHub {
     owner = "SergioRibera";
@@ -18,9 +18,11 @@ in
       "btrfs"
     ];
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
+    kernelPackages =
+      inputs.nix-cachyos-kernel.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages-cachyos-lts;
     consoleLogLevel = 3;
     initrd.verbose = false;
+    initrd.kernelModules = [ "amdgpu" ];
 
     plymouth = {
       enable = true;
@@ -34,7 +36,6 @@ in
     };
     kernelParams = [
       "preempt=full" # lower latency but less throughput
-      "reboot=efi"
       "quiet"
       "udev.log_level=3"
     ];

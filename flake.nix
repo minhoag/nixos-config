@@ -55,9 +55,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+    samaritan-sddm-theme = {
+      url = "github:omerwk/samaritan-sddm-theme";
+      flake = false;
     };
 
     phonto = {

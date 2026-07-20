@@ -1,35 +1,39 @@
 {
   pkgs,
   inputs,
-  self,
   ...
 }:
 
 let
-  sddm-theme = inputs.silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    theme = "silvia"; # select the config of your choice
-    # Pass the local image so it gets copied into the theme's background folder
-    extraBackgrounds = [ (self + "/modules/wallpapers/gyarados.jpg") ];
-    # Tell SilentSDDM to use this image
-    theme-overrides = {
-      "LoginScreen" = {
-        background = "gyarados.jpg";
-      };
-      "LockScreen" = {
-        background = "gyarados.jpg";
-      };
-    };
+  sddm-theme = pkgs.stdenvNoCC.mkDerivation {
+    pname = "samaritan";
+    version = "unstable";
+    src = inputs.samaritan-sddm-theme;
+    installPhase = ''
+      mkdir -p $out/share/sddm/themes/samaritan
+      cp -r . $out/share/sddm/themes/samaritan
+      cp ${../../wallpapers/gyarados.jpg} $out/share/sddm/themes/samaritan/gyarados.jpg
+      substituteInPlace $out/share/sddm/themes/samaritan/Main.qml \
+        --replace-fail 'SAMARITAN v1.2.951.04' 'WUMPS' \
+        --replace-fail 'text: "SAMARITAN"' 'text: "WUMPS"' \
+        --replace-fail 'Rectangle {' 'Rectangle {
+    Image {
+        anchors.fill: parent
+        source: "gyarados.jpg"
+        fillMode: Image.PreserveAspectCrop
+    }'
+      substituteInPlace $out/share/sddm/themes/samaritan/components/PasswordField.qml \
+        --replace-fail 'border.color: colors.background' 'border.color: "transparent"' \
+        --replace-fail 'color: colors.background' 'color: "transparent"' \
+        --replace-fail 'color: colors.primaryText' 'color: "#2B2418"'
+    '';
   };
 in
 {
   imports = [
     ./icon.nix
   ];
-  # include the test package which can be run using test-sddm-silent
-  environment.systemPackages = [
-    sddm-theme
-    sddm-theme.test
-  ];
+  environment.systemPackages = [ sddm-theme ];
   qt.enable = true;
   services = {
     accounts-daemon.enable = true;
@@ -42,18 +46,9 @@ in
       sddm = {
         enable = true;
         wayland.enable = true;
-        package = pkgs.kdePackages.sddm; # use qt6 version of sddm
-        theme = sddm-theme.pname;
-        # the following changes will require sddm to be restarted to take
-        # effect correctly. It is recomend to reboot after this
-        extraPackages = sddm-theme.propagatedBuildInputs;
-        settings = {
-          # required for styling the virtual keyboard
-          General = {
-            GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
-            InputMethod = "qtvirtualkeyboard";
-          };
-        };
+        package = pkgs.kdePackages.sddm;
+        theme = "samaritan";
+        settings.General.GreeterEnvironment = "QML_DISABLE_DISK_CACHE=1";
       };
     };
   };
