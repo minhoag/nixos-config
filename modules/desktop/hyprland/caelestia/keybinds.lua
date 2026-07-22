@@ -4,13 +4,14 @@ local fn = require("hyprland.functions")
 -- Apps and shell
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(vars.terminal))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(vars.fileExplorer))
-hl.bind("SUPER + R", hl.dsp.global("caelestia:launcher"))
+hl.bind("SUPER + D", hl.dsp.global("caelestia:launcher"))
 hl.bind("SUPER + L", hl.dsp.global("caelestia:lock"))
 
 -- Windows
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + V", hl.dsp.window.float())
-hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind("SUPER + ALT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
 hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
@@ -51,3 +52,6 @@ hl.bind(
     hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. vars.volumeStep .. "%-"),
     { locked = true, repeating = true }
 )
+
+-- Power
+hl.bind("SUPER + SHIFT + Q", hl.dsp.global("caelestia:session"))

@@ -41,6 +41,7 @@ in
         package = inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli.overrideAttrs (old: {
           patches = (old.patches or [ ]) ++ [
             ./caelestia/active-workspace-padding.patch
+            ./caelestia/session-keybinds.patch
             ./caelestia/smaller-tray-icons.patch
           ];
         });

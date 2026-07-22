@@ -496,7 +496,8 @@
             },
             {
                 "command": [
-                    "logout"
+                    "uwsm",
+                    "stop"
                 ],
                 "dangerous": true,
                 "description": "Log out of the current session",
@@ -595,7 +596,7 @@
         "lyricsDir": "~/Music/lyrics/",
         "mediaGif": "root:/assets/bongocat.gif",
         "noNotifsPic": "root:/assets/dino.png",
-        "sessionGif": "root:/assets/kurukuru.gif",
+        "sessionGif": "~/Pictures/Wallpapers/magikarp.gif",
         "wallpaperDir": "~/Pictures/Wallpapers"
     },
     "services": {
@@ -624,7 +625,8 @@
                 "hibernate"
             ],
             "logout": [
-                "logout"
+                "uwsm",
+                "stop"
             ],
             "reboot": [
                 "reboot"

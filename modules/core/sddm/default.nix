@@ -33,6 +33,7 @@ in
         enable = true;
         wayland.enable = true;
         package = pkgs.kdePackages.sddm;
+        extraPackages = [ pkgs.kdePackages.qt5compat ];
         theme = "caelestia";
         settings.General.GreeterEnvironment = "QML_DISABLE_DISK_CACHE=1";
       };

@@ -8,7 +8,7 @@
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.spoofdpi}/bin/spoofdpi --listen-addr 127.0.0.1:9999";
+      ExecStart = "${pkgs.spoofdpi}/bin/spoofdpi --clean --listen-addr 127.0.0.1:9999 --dns-mode https --https-split-mode chunk --https-chunk-size 1 --https-disorder";
       Restart = "on-failure";
       DynamicUser = true;
       NoNewPrivileges = true;
