@@ -1,5 +1,5 @@
 {
-  description = "My NixOS niri flake";
+  description = "My NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,9 +15,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
+    caelestia-shell = {
+      url = "github:AdiAmbassador/caelestia-shell-aw/main";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.caelestia-cli.url = "github:AdiAmbassador/caelestia-cli-aw/main";
+    };
+
+    caelestia-dots = {
+      url = "github:caelestia-dots/caelestia";
+      flake = false;
     };
 
     home-manager = {
@@ -32,11 +38,6 @@
 
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -93,7 +94,6 @@
               nixpkgs.overlays = [
                 hostOverlays.additions
                 hostOverlays.modifications
-                inputs.niri.overlays.niri
               ];
             }
           ];

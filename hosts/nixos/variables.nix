@@ -3,7 +3,7 @@
   username = "wumps";
   gitUsername = "hoang.nguyen";
   gitEmail = "nhoang120899@gmail.com";
-  desktop = "niri";
+  desktop = "hyprland";
   terminal = "kitty"; # Options: foot, kitty
   editor = "neovim"; # Options: vscode, neovim
   browser = "firefox";

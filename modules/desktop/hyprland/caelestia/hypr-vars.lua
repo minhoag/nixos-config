@@ -1,0 +1,1 @@
+/nix/store/bk28q38128msc36g3jigm3772kdnv484-home-manager-files/.config/caelestia/hypr-vars.lua

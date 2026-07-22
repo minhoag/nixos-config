@@ -39,6 +39,7 @@
     unzip # Tool For Handling .zip Files
     peazip # File and archive manager
     papirus-icon-theme # Papirus icon theme
+    qtengine # Qt platform theme used by Caelestia
     # calibre # Comprehensive e-book software
     # vivaldi # Browser for our Friends, powerful and personal
     # pay-respects # Magnificent app which corrects your previous console command
