@@ -11,7 +11,7 @@ in
     # Core Modules (Don't change unless you know what you're doing)
     "${self}/modules/core/boot"
     "${self}/modules/core/bash"
-    "${self}/modules/core/ibus"
+    "${self}/modules/core/input-method"
     "${self}/modules/core/fish"
     "${self}/modules/core/games"
     "${self}/modules/core/starship"

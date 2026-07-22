@@ -65,7 +65,7 @@
             "icon": {
                 "extraLarge": {
                     "italic": false,
-                    "size": 32,
+                    "size": 36,
                     "vaxes": {
                     },
                     "weight": 400
@@ -73,21 +73,21 @@
                 "family": "Material Symbols Rounded",
                 "large": {
                     "italic": false,
-                    "size": 20,
+                    "size": 24,
                     "vaxes": {
                     },
                     "weight": 400
                 },
                 "medium": {
                     "italic": false,
-                    "size": 14,
+                    "size": 18,
                     "vaxes": {
                     },
                     "weight": 400
                 },
                 "small": {
                     "italic": false,
-                    "size": 11,
+                    "size": 16,
                     "vaxes": {
                     },
                     "weight": 400
@@ -185,7 +185,7 @@
         },
         "transparency": {
             "base": 0.85,
-            "enabled": false,
+            "enabled": true,
             "layers": 0.4
         }
     },
@@ -281,18 +281,18 @@
         },
         "showOnHover": true,
         "status": {
-            "showAudio": false,
-            "showBattery": true,
+            "showAudio": true,
+            "showBattery": false,
             "showBluetooth": true,
             "showKbLayout": false,
             "showLockStatus": true,
-            "showMicrophone": false,
-            "showNetwork": true,
-            "showWifi": true
+            "showMicrophone": true,
+            "showNetwork": false,
+            "showWifi": false
         },
         "tray": {
             "background": false,
-            "compact": false,
+            "compact": true,
             "hiddenIcons": [
             ],
             "iconSubs": [
@@ -301,34 +301,26 @@
         },
         "workspaces": {
             "activeIndicator": true,
-            "activeLabel": "󰮯",
+            "activeLabel": " ",
             "activeTrail": false,
             "capitalisation": "preserve",
             "label": "  ",
             "maxWindowIcons": 5,
             "occupiedBg": false,
-            "occupiedLabel": "󰮯",
-            "perMonitorWorkspaces": true,
+            "occupiedLabel": " ",
+            "perMonitorWorkspaces": false,
             "showWindows": true,
             "showWindowsOnSpecialWorkspaces": true,
-            "shown": 5,
+            "shown": 6,
             "specialWorkspaceIcons": [
-                {
-                    "icon": "sports_esports",
-                    "name": "steam"
-                }
             ],
             "windowIcons": [
-                {
-                    "icon": "sports_esports",
-                    "regex": "steam(_app_(default|[0-9]+))?"
-                }
             ]
         }
     },
     "border": {
-        "rounding": 25,
-        "smoothing": 20,
+        "rounding": 15,
+        "smoothing": 15,
         "thickness": 10
     },
     "dashboard": {
@@ -369,25 +361,6 @@
         "battery": {
             "criticalLevel": 3,
             "warnLevels": [
-                {
-                    "icon": "battery_android_frame_2",
-                    "level": 20,
-                    "message": "You might want to plug in a charger",
-                    "title": "Low battery"
-                },
-                {
-                    "icon": "battery_android_frame_1",
-                    "level": 10,
-                    "message": "You should probably plug in a charger <b>now</b>",
-                    "title": "Did you see the previous message?"
-                },
-                {
-                    "critical": true,
-                    "icon": "battery_android_alert",
-                    "level": 5,
-                    "message": "PLUG THE CHARGER RIGHT NOW!!",
-                    "title": "Critical battery level"
-                }
             ]
         },
         "idle": {
@@ -421,7 +394,7 @@
         "showOverFullscreen": false
     },
     "launcher": {
-        "actionPrefix": ">",
+        "actionPrefix": ":",
         "actions": [
             {
                 "command": [
@@ -573,7 +546,7 @@
         ],
         "hiddenApps": [
         ],
-        "maxShown": 7,
+        "maxShown": 6,
         "maxWallpapers": 9,
         "showOnHover": false,
         "specialPrefix": "@",
@@ -725,15 +698,7 @@
             "vpnChanged": true
         },
         "vpn": {
-            "enabled": false,
-            "provider": [
-                {
-                    "displayName": "Wireguard (Your VPN)",
-                    "enabled": false,
-                    "interface": "your-connection-name",
-                    "name": "wireguard"
-                }
-            ]
+            "enabled": false
         }
     }
 }

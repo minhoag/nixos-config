@@ -4,6 +4,8 @@ let
     cp -r ${inputs.caelestia-dots}/hypr $out
     chmod -R u+w $out
     cp $out/scheme/default.lua $out/scheme/current.lua
+    substituteInPlace $out/hyprland/keybinds.lua \
+      --replace-fail "qs -c caelestia kill; sleep .1; caelestia shell -d" "pkill -x quickshell; sleep .1; caelestia shell -d"
   '';
 in
 {
@@ -23,10 +25,10 @@ in
 
   home-manager.sharedModules = [
     inputs.caelestia-shell.homeManagerModules.default
-    ({ lib, pkgs, ... }: {
+    ({ config, lib, pkgs, ... }: {
       xdg.configFile = {
         hypr.source = hyprConfig;
-        caelestia.source = ./caelestia;
+        caelestia.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/desktop/hyprland/caelestia";
       };
 
       home.activation.removeNiriState = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
@@ -38,7 +40,10 @@ in
         systemd.enable = false;
         cli.enable = true;
         package = inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli.overrideAttrs (old: {
-          patches = (old.patches or [ ]) ++ [ ./caelestia/active-workspace-padding.patch ];
+          patches = (old.patches or [ ]) ++ [
+            ./caelestia/active-workspace-padding.patch
+            ./caelestia/smaller-tray-icons.patch
+          ];
         });
       };
     })

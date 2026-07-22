@@ -4,7 +4,7 @@
   # for example: environment.systemPackages = with pkgs; [pokego];
   hotkeyhub = pkgs.callPackage ./hotkeyhub.nix { };
   pokego = pkgs.callPackage ./pokego.nix { };
-  unikey-wayland = pkgs.callPackage ./unikey-wayland.nix { };
+  vmk = pkgs.callPackage ./vmk.nix { };
   # waybar-weather = pkgs.callPackage ./waybar-weather.nix { };
   
 }

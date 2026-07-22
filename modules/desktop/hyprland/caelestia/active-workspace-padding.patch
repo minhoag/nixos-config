@@ -1,13 +1,13 @@
 --- a/modules/bar/components/workspaces/Workspace.qml
 +++ b/modules/bar/components/workspaces/Workspace.qml
-@@ -19,6 +19,6 @@ ColumnLayout {
-     readonly property bool isWorkspace: true // Flag for finding workspace children
-     // Unanimated prop for others to use as reference
--    readonly property int size: implicitHeight + (hasWindows ? Tokens.padding.extraSmall : 0)
-+    readonly property int size: implicitHeight + 8 + (hasWindows ? Tokens.padding.extraSmall : 0)
+# @@ -19,6 +19,6 @@ ColumnLayout {
+#      readonly property bool isWorkspace: true // Flag for finding workspace children
+#      // Unanimated prop for others to use as reference
+# -    readonly property int size: implicitHeight + (hasWindows ? Tokens.padding.extraSmall : 0)
+# +    readonly property int size: implicitHeight + (hasWindows ? Tokens.padding.extraSmall : 0)
  
-     readonly property int ws: groupOffset + index + 1
-     readonly property bool isOccupied: occupied[ws] ?? false
+#      readonly property int ws: groupOffset + index + 1
+#      readonly property bool isOccupied: occupied[ws] ?? false
 @@ -32,7 +32,7 @@ ColumnLayout {
      StyledText {
          id: indicator
@@ -17,3 +17,11 @@
          Layout.preferredHeight: Tokens.sizes.bar.innerWidth - Tokens.padding.small
  
          animate: true
+@@ -53,6 +53,7 @@ ColumnLayout {
+         color: Config.bar.workspaces.occupiedBg || root.isOccupied || root.activeWsId === root.ws ? Colours.palette.m3onSurface : Colours.layer(Colours.palette.m3outlineVariant, 2)
+         verticalAlignment: Qt.AlignVCenter
+         font.family: Tokens.font.workspaces
++        font.pointSize: Tokens.font.body.small.pointSize - 2
+     }
+ 
+     Loader {
