@@ -15,6 +15,7 @@ in
   environment.systemPackages = with pkgs; [
     cliphist
     hyprpicker
+    hotkeyhub
     swappy
     wl-clipboard
     ydotool
@@ -22,7 +23,7 @@ in
 
   home-manager.sharedModules = [
     inputs.caelestia-shell.homeManagerModules.default
-    ({ lib, ... }: {
+    ({ lib, pkgs, ... }: {
       xdg.configFile = {
         hypr.source = hyprConfig;
         caelestia.source = ./caelestia;
@@ -36,6 +37,9 @@ in
         enable = true;
         systemd.enable = false;
         cli.enable = true;
+        package = inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [ ./caelestia/active-workspace-padding.patch ];
+        });
       };
     })
   ];

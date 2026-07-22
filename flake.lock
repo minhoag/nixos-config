@@ -73,6 +73,22 @@
         "type": "github"
       }
     },
+    "caelestia-sddm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783938270,
+        "narHash": "sha256-9c3+JvwsLiU+tgzGbY2u8xJT32iSt8GkG0vSjV6ivDQ=",
+        "owner": "ItsABigIgloo",
+        "repo": "caelestia-sddm",
+        "rev": "f5ffb6e9de159e7b1a506b1284f660ee3b77500c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ItsABigIgloo",
+        "repo": "caelestia-sddm",
+        "type": "github"
+      }
+    },
     "caelestia-shell": {
       "inputs": {
         "caelestia-cli": "caelestia-cli",
@@ -280,27 +296,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "ibus-bamboo": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779206600,
-        "narHash": "sha256-1qj1Fx8RDdA1qEGWn+/nQCAu4HCei+YbF7SHDzuFw2I=",
-        "owner": "BambooEngine",
-        "repo": "ibus-bamboo",
-        "rev": "49e03d7a36b8a8b796950c158b545af8cf9707d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BambooEngine",
-        "ref": "v0.8.5",
-        "repo": "ibus-bamboo",
         "type": "github"
       }
     },
@@ -559,11 +554,11 @@
     "root": {
       "inputs": {
         "caelestia-dots": "caelestia-dots",
+        "caelestia-sddm": "caelestia-sddm",
         "caelestia-shell": "caelestia-shell",
         "cursor": "cursor",
         "disko": "disko",
         "home-manager": "home-manager",
-        "ibus-bamboo": "ibus-bamboo",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
@@ -571,7 +566,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nvf": "nvf",
         "phonto": "phonto",
-        "samaritan-sddm-theme": "samaritan-sddm-theme",
         "sfdx-nix": "sfdx-nix",
         "sops-nix": "sops-nix"
       }
@@ -594,22 +588,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "samaritan-sddm-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1784373038,
-        "narHash": "sha256-qojsg9MD19J1SJ0fMs8QMXZh+P1/aKQl76N9nUsv4cc=",
-        "owner": "omerwk",
-        "repo": "samaritan-sddm-theme",
-        "rev": "7146242e93755f219820d54590f1766d5ae9a5ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "omerwk",
-        "repo": "samaritan-sddm-theme",
         "type": "github"
       }
     },

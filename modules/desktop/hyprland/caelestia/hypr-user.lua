@@ -1,4 +1,5 @@
 hl.env("QSG_USE_SIMPLE_ANIMATION_DRIVER", "1")
+hl.bind("SUPER + SLASH", hl.dsp.exec_cmd("hotkeyhub"), { description = "Hotkey cheat sheet" })
 
 hl.monitor({
     output = "DP-1",

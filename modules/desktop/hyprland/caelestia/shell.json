@@ -65,7 +65,7 @@
             "icon": {
                 "extraLarge": {
                     "italic": false,
-                    "size": 36,
+                    "size": 32,
                     "vaxes": {
                     },
                     "weight": 400
@@ -73,21 +73,21 @@
                 "family": "Material Symbols Rounded",
                 "large": {
                     "italic": false,
-                    "size": 24,
+                    "size": 20,
                     "vaxes": {
                     },
                     "weight": 400
                 },
                 "medium": {
                     "italic": false,
-                    "size": 18,
+                    "size": 14,
                     "vaxes": {
                     },
                     "weight": 400
                 },
                 "small": {
                     "italic": false,
-                    "size": 15,
+                    "size": 11,
                     "vaxes": {
                     },
                     "weight": 400
@@ -144,7 +144,7 @@
                     "weight": 400
                 }
             },
-            "scale": 1,
+            "scale": 0.9,
             "title": {
                 "family": "GoogleSansFlex",
                 "large": {

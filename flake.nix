@@ -10,11 +10,6 @@
 
     sfdx-nix.url = "github:rfaulhaber/sfdx-nix";
 
-    ibus-bamboo = {
-      url = "github:BambooEngine/ibus-bamboo/v0.8.5";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     caelestia-shell = {
       url = "github:AdiAmbassador/caelestia-shell-aw/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,8 +53,8 @@
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
-    samaritan-sddm-theme = {
-      url = "github:omerwk/samaritan-sddm-theme";
+    caelestia-sddm = {
+      url = "github:ItsABigIgloo/caelestia-sddm";
       flake = false;
     };
 
