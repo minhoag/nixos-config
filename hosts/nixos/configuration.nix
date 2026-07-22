@@ -35,6 +35,7 @@ in
     # Optional
     "${self}/modules/hardware/drives" # Auto-mounts the internal/external drives
     "${self}/modules/hardware/video/amdgpu.nix"
+    "${self}/modules/desktop/theme"
     "${self}/modules/desktop/${vars.desktop}" # Set window manager defined in variables.nix
     "${self}/modules/programs/browser/${vars.browser}" # Set browser defined in variables.nix
     "${self}/modules/programs/terminal/${vars.terminal}" # Set terminal defined in variables.nix

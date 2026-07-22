@@ -1,5 +1,23 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.spoofdpi ];
+
+  systemd.services.spoofdpi = {
+    description = "SpoofDPI local proxy";
+    wantedBy = [ "multi-user.target" ];
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.spoofdpi}/bin/spoofdpi --listen-addr 127.0.0.1:9999";
+      Restart = "on-failure";
+      DynamicUser = true;
+      NoNewPrivileges = true;
+      PrivateTmp = true;
+      ProtectHome = true;
+      ProtectSystem = "strict";
+    };
+  };
+
   # Services to start
   services = {
     libinput.enable = true; # Input Handling

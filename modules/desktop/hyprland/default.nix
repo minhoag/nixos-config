@@ -4,8 +4,7 @@ let
     cp -r ${inputs.caelestia-dots}/hypr $out
     chmod -R u+w $out
     cp $out/scheme/default.lua $out/scheme/current.lua
-    substituteInPlace $out/hyprland/keybinds.lua \
-      --replace-fail "qs -c caelestia kill; sleep .1; caelestia shell -d" "pkill -x quickshell; sleep .1; caelestia shell -d"
+    cp ${./caelestia/keybinds.lua} $out/hyprland/keybinds.lua
   '';
 in
 {
