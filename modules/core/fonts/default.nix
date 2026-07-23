@@ -10,6 +10,7 @@
       # Normal Fonts
       noto-fonts
       noto-fonts-color-emoji
+      material-symbols
       inter
       fira-code
       nerd-fonts.fira-code

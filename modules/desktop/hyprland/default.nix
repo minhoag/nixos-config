@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }:
 let
+  caelestiaWallpaperEngine = import ./caelestia/caelestia-wallpaperengine.nix { inherit pkgs; };
   hyprConfig = pkgs.runCommand "caelestia-hypr-config" { } ''
     cp -r ${inputs.caelestia-dots}/hypr $out
     chmod -R u+w $out
@@ -25,6 +26,8 @@ in
   home-manager.sharedModules = [
     inputs.caelestia-shell.homeManagerModules.default
     ({ config, lib, pkgs, ... }: {
+      home.packages = [ caelestiaWallpaperEngine ];
+
       xdg.configFile = {
         hypr.source = hyprConfig;
         caelestia.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/desktop/hyprland/caelestia";
@@ -43,6 +46,7 @@ in
             ./caelestia/active-workspace-padding.patch
             ./caelestia/session-keybinds.patch
             ./caelestia/smaller-tray-icons.patch
+            ./caelestia/wallpaperengine.patch
           ];
         });
       };
