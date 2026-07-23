@@ -55,6 +55,7 @@ in
     "${self}/modules/programs/media/phonto"
     # "${self}/modules/programs/tuning/tlp"
     # "${self}/modules/programs/tuning/lact" # GPU fan, clock and power configuration
+    "${self}/modules/core/virtualisation"
   ]
   ++ lib.optional (vars.games == true) "${self}/modules/core/games";
 }

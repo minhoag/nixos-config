@@ -1,3 +1,5 @@
 {
-  virtualisation.waydroid.enable = true;
+  imports = [
+    ./wayland.nix
+  ];
 }
