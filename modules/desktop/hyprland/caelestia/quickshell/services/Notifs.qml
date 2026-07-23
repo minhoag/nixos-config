@@ -20,8 +20,7 @@ Singleton {
     property alias dnd: props.dnd
     property bool loaded
     property list<string> blockedNotifs: [
-        "blueman-manager",
-        "another-app"
+        "blueman"
     ]
 
     function hasFullscreen(): bool {
@@ -95,7 +94,7 @@ Singleton {
         persistenceSupported: true
 
         onNotification: notif => {
-            if (root.blockedNotifs.includes(notif.desktopEntry))
+            if (root.blockedNotifs.includes(notif.appName))
                 return;
 
             notif.tracked = true;
