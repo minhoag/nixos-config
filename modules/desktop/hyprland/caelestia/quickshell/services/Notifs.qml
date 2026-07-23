@@ -18,8 +18,11 @@ Singleton {
     readonly property list<NotifData> notClosed: list.filter(n => !n.closed)
     readonly property list<NotifData> popups: list.filter(n => n.popup)
     property alias dnd: props.dnd
-
     property bool loaded
+    property list<string> blockedNotifs: [
+        "blueman-manager",
+        "another-app"
+    ]
 
     function hasFullscreen(): bool {
         for (const monitor of Hypr.monitors.values) {
@@ -92,6 +95,9 @@ Singleton {
         persistenceSupported: true
 
         onNotification: notif => {
+            if (root.blockedNotifs.includes(notif.desktopEntry))
+                return;
+
             notif.tracked = true;
 
             const comp = notifComp.createObject(root, {

@@ -79,14 +79,14 @@ StyledRect {
             delegate: DelegateChooser {
                 role: "id"
 
-                DelegateChoice {
-                    roleValue: "wifi"
-                    delegate: Toggle {
-                        icon: "wifi"
-                        checked: Nmcli.wifiEnabled
-                        onClicked: Nmcli.toggleWifi()
-                    }
-                }
+                // DelegateChoice {
+                //     roleValue: "wifi"
+                //     delegate: Toggle {
+                //         icon: "wifi"
+                //         checked: Nmcli.wifiEnabled
+                //         onClicked: Nmcli.toggleWifi()
+                //     }
+                // }
                 DelegateChoice {
                     roleValue: "bluetooth"
                     delegate: Toggle {
@@ -111,18 +111,18 @@ StyledRect {
                         }
                     }
                 }
-                DelegateChoice {
-                    roleValue: "settings"
-                    delegate: Toggle {
-                        icon: "settings"
-                        inactiveOnColour: Colours.palette.m3onSurfaceVariant
-                        isToggle: false
-                        onClicked: {
-                            root.screenState.utilities = false;
-                            WindowFactory.create();
-                        }
-                    }
-                }
+                // DelegateChoice {
+                //     roleValue: "settings"
+                //     delegate: Toggle {
+                //         icon: "settings"
+                //         inactiveOnColour: Colours.palette.m3onSurfaceVariant
+                //         isToggle: false
+                //         onClicked: {
+                //             root.screenState.utilities = false;
+                //             WindowFactory.create();
+                //         }
+                //     }
+                // }
                 DelegateChoice {
                     roleValue: "gameMode"
                     delegate: Toggle {

@@ -42,12 +42,9 @@ in
         systemd.enable = false;
         cli.enable = true;
         package = inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli.overrideAttrs (old: {
-          patches = (old.patches or [ ]) ++ [
-            ./caelestia/active-workspace-padding.patch
-            ./caelestia/session-keybinds.patch
-            ./caelestia/smaller-tray-icons.patch
-            ./caelestia/wallpaperengine.patch
-          ];
+          postPatch = (old.postPatch or "") + ''
+            cp -r ${./caelestia/quickshell}/. .
+          '';
         });
       };
     })
