@@ -24,7 +24,7 @@ in
     "${self}/modules/core/sddm"
     "${self}/modules/core/security"
     "${self}/modules/core/services"
-    "${self}/modules/core/sops"
+    # "${self}/modules/core/sops" # Enable after restoring the SOPS key.
     # "${self}/modules/core/syncthing"
     "${self}/modules/core/system"
     "${self}/modules/core/thunar"
