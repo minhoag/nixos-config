@@ -3,6 +3,8 @@ local fn = require("hyprland.functions")
 
 -- Apps and shell
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(vars.terminal))
+hl.bind("CTRL + ALT + T", hl.dsp.exec_cmd("kitty"))
+hl.bind("SUPER + W", hl.dsp.exec_cmd("firefox"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(vars.fileExplorer))
 hl.bind("SUPER + D", hl.dsp.global("caelestia:launcher"))
 hl.bind("SUPER + L", hl.dsp.global("caelestia:lock"))
@@ -55,3 +57,4 @@ hl.bind(
 
 -- Power
 hl.bind("SUPER + SHIFT + Q", hl.dsp.global("caelestia:session"))
+hl.bind("SUPER + SHIFT + Escape", hl.dsp.exec_cmd("uwsm stop"))
