@@ -29,7 +29,6 @@ in
     inputs.caelestia-shell.homeManagerModules.default
     (
       {
-        config,
         lib,
         pkgs,
         ...
@@ -39,7 +38,7 @@ in
 
         xdg.configFile = {
           hypr.source = hyprConfig;
-          caelestia.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/desktop/hyprland/caelestia";
+          caelestia.source = ./caelestia;
         };
 
         home.activation.removeNiriState = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
